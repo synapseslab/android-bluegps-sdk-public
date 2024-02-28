@@ -5,9 +5,7 @@
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
 </p>
 
-# BlueGPS SDK Examples for Android
-Official Android Demo App showcases the BlueGPS SDK features and acts as reference implementation for many of the basic SDK features.
-Getting started requires you setup a **license**.
+# BlueGPS Android SDK
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
