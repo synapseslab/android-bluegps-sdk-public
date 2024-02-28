@@ -1,7 +1,7 @@
 # android-bluegps-sdk
 
 ### Version 1.5.3
-January 16, 2023
+January 16, 2024
 #### 🐞 Bug Fixes
 #### ⬆️ Behavior Changes
 #### ✅ New Features
