@@ -1,4 +1,9 @@
-![BlueGPS Logo](./documentation/images/bluegps_logo.svg)
+![BlueGPS Logo](./documentation/images/synapses_bluegps.png)
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
+</p>
 
 # BlueGPS SDK Examples for Android
 Official Android Demo App showcases the BlueGPS SDK features and acts as reference implementation for many of the basic SDK features.
