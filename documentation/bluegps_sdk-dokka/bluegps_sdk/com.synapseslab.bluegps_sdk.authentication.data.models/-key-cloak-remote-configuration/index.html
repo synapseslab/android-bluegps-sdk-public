@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KeyCloakRemoteConfiguration</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            bluegps_sdk
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":bluegps_sdk:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="bluegps_sdk::com.synapseslab.bluegps_sdk.authentication.data.models/KeyCloakRemoteConfiguration///PointingToDeclaration//-636451221">
+  <div class="breadcrumbs"><a href="../../../index.html">bluegps_sdk</a><span class="delimiter">/</span><a href="../index.html">com.synapseslab.bluegps_sdk.authentication.data.models</a><span class="delimiter">/</span><span class="current">KeyCloakRemoteConfiguration</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Key</span><wbr></wbr><span>Cloak</span><wbr></wbr><span>Remote</span><wbr></wbr><span><span>Configuration</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">KeyCloakRemoteConfiguration</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>issuer<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>authorization_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>token_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>introspection_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userinfo_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>end_session_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>frontchannel_logout_session_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>frontchannel_logout_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>jwks_uri<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>check_session_iframe<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>grant_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-grant-type/index.html">KeycloakGrantType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>acr_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>response_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-response-type/index.html">KeycloakResponseType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>subject_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-subject-type/index.html">KeycloakSubjectType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id_token_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id_token_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id_token_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userinfo_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userinfo_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userinfo_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>request_object_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>request_object_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>request_object_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>response_modes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-reponse-mode/index.html">KeycloakReponseMode</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>registration_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>token_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>token_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>introspection_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>introspection_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>authorization_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>authorization_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>authorization_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>claims_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim/index.html">KeycloakClaim</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>claim_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim-type-supported/index.html">KeycloakClaimTypeSupported</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>claims_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>scopes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-scope/index.html">KeycloakScope</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>request_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>request_uri_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>require_request_uri_registration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>code_challenge_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-challenge-method/index.html">KeycloakChallengeMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>tls_client_certificate_bound_access_tokens<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>revocation_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>revocation_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>revocation_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>backchannel_logout_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>backchannel_logout_session_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>device_authorization_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>backchannel_token_delivery_modes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-delivery-mode/index.html">KeycloakDeliveryMode</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>backchannel_authentication_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>backchannel_authentication_request_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>require_pushed_authorization_requests<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>pushed_authorization_request_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mtls_endpoint_aliases<span class="token operator">: </span><a href="../-key-cloak-m-t-l-s-aliases/index.html">KeyCloakMTLSAliases</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1984900273%2FConstructors%2F-636451221" anchor-label="KeyCloakRemoteConfiguration" id="-1984900273%2FConstructors%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-key-cloak-remote-configuration.html"><span>Key</span><wbr></wbr><span>Cloak</span><wbr></wbr><span>Remote</span><wbr></wbr><span><span>Configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1984900273%2FConstructors%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">issuer<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">authorization_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">token_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">introspection_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">userinfo_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">end_session_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">frontchannel_logout_session_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">frontchannel_logout_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">jwks_uri<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">check_session_iframe<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">grant_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-grant-type/index.html">KeycloakGrantType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">acr_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">response_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-response-type/index.html">KeycloakResponseType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">subject_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-subject-type/index.html">KeycloakSubjectType</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">id_token_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">id_token_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">id_token_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">userinfo_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">userinfo_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">userinfo_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">request_object_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">request_object_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">request_object_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">response_modes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-reponse-mode/index.html">KeycloakReponseMode</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">registration_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">token_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">token_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">introspection_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">introspection_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">authorization_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">authorization_encryption_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">authorization_encryption_enc_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">claims_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim/index.html">KeycloakClaim</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">claim_types_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim-type-supported/index.html">KeycloakClaimTypeSupported</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">claims_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">scopes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-scope/index.html">KeycloakScope</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">request_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">request_uri_parameter_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">require_request_uri_registration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">code_challenge_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-challenge-method/index.html">KeycloakChallengeMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">tls_client_certificate_bound_access_tokens<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">revocation_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">revocation_endpoint_auth_methods_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">revocation_endpoint_auth_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">backchannel_logout_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">backchannel_logout_session_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">device_authorization_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">backchannel_token_delivery_modes_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-delivery-mode/index.html">KeycloakDeliveryMode</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">backchannel_authentication_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">backchannel_authentication_request_signing_alg_values_supported<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">require_pushed_authorization_requests<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">pushed_authorization_request_endpoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">mtls_endpoint_aliases<span class="token operator">: </span><a href="../-key-cloak-m-t-l-s-aliases/index.html">KeyCloakMTLSAliases</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="174697553%2FProperties%2F-636451221" anchor-label="acr_values_supported" id="174697553%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="acr_values_supported.html"><span><span>acr_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="174697553%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="acr_values_supported.html">acr_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-180870721%2FProperties%2F-636451221" anchor-label="authorization_encryption_alg_values_supported" id="-180870721%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="authorization_encryption_alg_values_supported.html"><span><span>authorization_encryption_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-180870721%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="authorization_encryption_alg_values_supported.html">authorization_encryption_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1351500669%2FProperties%2F-636451221" anchor-label="authorization_encryption_enc_values_supported" id="1351500669%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="authorization_encryption_enc_values_supported.html"><span><span>authorization_encryption_enc_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1351500669%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="authorization_encryption_enc_values_supported.html">authorization_encryption_enc_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1860333898%2FProperties%2F-636451221" anchor-label="authorization_endpoint" id="-1860333898%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="authorization_endpoint.html"><span><span>authorization_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1860333898%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="authorization_endpoint.html">authorization_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1502643619%2FProperties%2F-636451221" anchor-label="authorization_signing_alg_values_supported" id="-1502643619%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="authorization_signing_alg_values_supported.html"><span><span>authorization_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1502643619%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="authorization_signing_alg_values_supported.html">authorization_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1449282224%2FProperties%2F-636451221" anchor-label="backchannel_authentication_endpoint" id="1449282224%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backchannel_authentication_endpoint.html"><span><span>backchannel_authentication_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449282224%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="backchannel_authentication_endpoint.html">backchannel_authentication_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1308353625%2FProperties%2F-636451221" anchor-label="backchannel_authentication_request_signing_alg_values_supported" id="-1308353625%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backchannel_authentication_request_signing_alg_values_supported.html"><span><span>backchannel_authentication_request_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1308353625%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="backchannel_authentication_request_signing_alg_values_supported.html">backchannel_authentication_request_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2111629858%2FProperties%2F-636451221" anchor-label="backchannel_logout_session_supported" id="-2111629858%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backchannel_logout_session_supported.html"><span><span>backchannel_logout_session_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2111629858%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="backchannel_logout_session_supported.html">backchannel_logout_session_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1974940267%2FProperties%2F-636451221" anchor-label="backchannel_logout_supported" id="-1974940267%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backchannel_logout_supported.html"><span><span>backchannel_logout_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1974940267%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="backchannel_logout_supported.html">backchannel_logout_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="612304788%2FProperties%2F-636451221" anchor-label="backchannel_token_delivery_modes_supported" id="612304788%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backchannel_token_delivery_modes_supported.html"><span><span>backchannel_token_delivery_modes_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="612304788%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="backchannel_token_delivery_modes_supported.html">backchannel_token_delivery_modes_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-delivery-mode/index.html">KeycloakDeliveryMode</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="868555245%2FProperties%2F-636451221" anchor-label="check_session_iframe" id="868555245%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check_session_iframe.html"><span><span>check_session_iframe</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="868555245%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="check_session_iframe.html">check_session_iframe</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="590074180%2FProperties%2F-636451221" anchor-label="claim_types_supported" id="590074180%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="claim_types_supported.html"><span><span>claim_types_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="590074180%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="claim_types_supported.html">claim_types_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim-type-supported/index.html">KeycloakClaimTypeSupported</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1017837087%2FProperties%2F-636451221" anchor-label="claims_parameter_supported" id="-1017837087%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="claims_parameter_supported.html"><span><span>claims_parameter_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1017837087%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="claims_parameter_supported.html">claims_parameter_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-432457589%2FProperties%2F-636451221" anchor-label="claims_supported" id="-432457589%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="claims_supported.html"><span><span>claims_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-432457589%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="claims_supported.html">claims_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-claim/index.html">KeycloakClaim</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-428985570%2FProperties%2F-636451221" anchor-label="code_challenge_methods_supported" id="-428985570%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="code_challenge_methods_supported.html"><span><span>code_challenge_methods_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-428985570%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="code_challenge_methods_supported.html">code_challenge_methods_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-challenge-method/index.html">KeycloakChallengeMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1525775845%2FProperties%2F-636451221" anchor-label="device_authorization_endpoint" id="1525775845%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="device_authorization_endpoint.html"><span><span>device_authorization_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1525775845%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="device_authorization_endpoint.html">device_authorization_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-524344273%2FProperties%2F-636451221" anchor-label="end_session_endpoint" id="-524344273%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="end_session_endpoint.html"><span><span>end_session_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-524344273%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="end_session_endpoint.html">end_session_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1287091444%2FProperties%2F-636451221" anchor-label="frontchannel_logout_session_supported" id="1287091444%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frontchannel_logout_session_supported.html"><span><span>frontchannel_logout_session_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1287091444%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="frontchannel_logout_session_supported.html">frontchannel_logout_session_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-308239701%2FProperties%2F-636451221" anchor-label="frontchannel_logout_supported" id="-308239701%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frontchannel_logout_supported.html"><span><span>frontchannel_logout_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-308239701%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="frontchannel_logout_supported.html">frontchannel_logout_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1457140836%2FProperties%2F-636451221" anchor-label="grant_types_supported" id="1457140836%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="grant_types_supported.html"><span><span>grant_types_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1457140836%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="grant_types_supported.html">grant_types_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-grant-type/index.html">KeycloakGrantType</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1010272309%2FProperties%2F-636451221" anchor-label="id_token_encryption_alg_values_supported" id="-1010272309%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id_token_encryption_alg_values_supported.html"><span><span>id_token_encryption_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1010272309%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="id_token_encryption_alg_values_supported.html">id_token_encryption_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="522099081%2FProperties%2F-636451221" anchor-label="id_token_encryption_enc_values_supported" id="522099081%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id_token_encryption_enc_values_supported.html"><span><span>id_token_encryption_enc_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522099081%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="id_token_encryption_enc_values_supported.html">id_token_encryption_enc_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2010005551%2FProperties%2F-636451221" anchor-label="id_token_signing_alg_values_supported" id="-2010005551%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id_token_signing_alg_values_supported.html"><span><span>id_token_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2010005551%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="id_token_signing_alg_values_supported.html">id_token_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="339316088%2FProperties%2F-636451221" anchor-label="introspection_endpoint" id="339316088%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="introspection_endpoint.html"><span><span>introspection_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="339316088%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="introspection_endpoint.html">introspection_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-14964967%2FProperties%2F-636451221" anchor-label="introspection_endpoint_auth_methods_supported" id="-14964967%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="introspection_endpoint_auth_methods_supported.html"><span><span>introspection_endpoint_auth_methods_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-14964967%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="introspection_endpoint_auth_methods_supported.html">introspection_endpoint_auth_methods_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1438251442%2FProperties%2F-636451221" anchor-label="introspection_endpoint_auth_signing_alg_values_supported" id="1438251442%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="introspection_endpoint_auth_signing_alg_values_supported.html"><span><span>introspection_endpoint_auth_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1438251442%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="introspection_endpoint_auth_signing_alg_values_supported.html">introspection_endpoint_auth_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1315887016%2FProperties%2F-636451221" anchor-label="issuer" id="-1315887016%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="issuer.html"><span><span>issuer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1315887016%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="issuer.html">issuer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1039411057%2FProperties%2F-636451221" anchor-label="jwks_uri" id="-1039411057%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="jwks_uri.html"><span><span>jwks_uri</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1039411057%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="jwks_uri.html">jwks_uri</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1350753628%2FProperties%2F-636451221" anchor-label="mtls_endpoint_aliases" id="-1350753628%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mtls_endpoint_aliases.html"><span><span>mtls_endpoint_aliases</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1350753628%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mtls_endpoint_aliases.html">mtls_endpoint_aliases</a><span class="token operator">: </span><a href="../-key-cloak-m-t-l-s-aliases/index.html">KeyCloakMTLSAliases</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="840409368%2FProperties%2F-636451221" anchor-label="pushed_authorization_request_endpoint" id="840409368%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pushed_authorization_request_endpoint.html"><span><span>pushed_authorization_request_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="840409368%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="pushed_authorization_request_endpoint.html">pushed_authorization_request_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="789681678%2FProperties%2F-636451221" anchor-label="registration_endpoint" id="789681678%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="registration_endpoint.html"><span><span>registration_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="789681678%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="registration_endpoint.html">registration_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1086629105%2FProperties%2F-636451221" anchor-label="request_object_encryption_alg_values_supported" id="1086629105%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request_object_encryption_alg_values_supported.html"><span><span>request_object_encryption_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086629105%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request_object_encryption_alg_values_supported.html">request_object_encryption_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1675966801%2FProperties%2F-636451221" anchor-label="request_object_encryption_enc_values_supported" id="-1675966801%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request_object_encryption_enc_values_supported.html"><span><span>request_object_encryption_enc_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1675966801%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request_object_encryption_enc_values_supported.html">request_object_encryption_enc_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="386602091%2FProperties%2F-636451221" anchor-label="request_object_signing_alg_values_supported" id="386602091%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request_object_signing_alg_values_supported.html"><span><span>request_object_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="386602091%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request_object_signing_alg_values_supported.html">request_object_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1612748321%2FProperties%2F-636451221" anchor-label="request_parameter_supported" id="1612748321%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request_parameter_supported.html"><span><span>request_parameter_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1612748321%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request_parameter_supported.html">request_parameter_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1277493268%2FProperties%2F-636451221" anchor-label="request_uri_parameter_supported" id="1277493268%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request_uri_parameter_supported.html"><span><span>request_uri_parameter_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1277493268%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request_uri_parameter_supported.html">request_uri_parameter_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-426331245%2FProperties%2F-636451221" anchor-label="require_pushed_authorization_requests" id="-426331245%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="require_pushed_authorization_requests.html"><span><span>require_pushed_authorization_requests</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-426331245%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="require_pushed_authorization_requests.html">require_pushed_authorization_requests</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="265238203%2FProperties%2F-636451221" anchor-label="require_request_uri_registration" id="265238203%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="require_request_uri_registration.html"><span><span>require_request_uri_registration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="265238203%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="require_request_uri_registration.html">require_request_uri_registration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2130496688%2FProperties%2F-636451221" anchor-label="response_modes_supported" id="2130496688%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response_modes_supported.html"><span><span>response_modes_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2130496688%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="response_modes_supported.html">response_modes_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-reponse-mode/index.html">KeycloakReponseMode</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1253532359%2FProperties%2F-636451221" anchor-label="response_types_supported" id="1253532359%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response_types_supported.html"><span><span>response_types_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1253532359%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="response_types_supported.html">response_types_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-response-type/index.html">KeycloakResponseType</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1871256909%2FProperties%2F-636451221" anchor-label="revocation_endpoint" id="-1871256909%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revocation_endpoint.html"><span><span>revocation_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1871256909%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="revocation_endpoint.html">revocation_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1492476034%2FProperties%2F-636451221" anchor-label="revocation_endpoint_auth_methods_supported" id="-1492476034%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revocation_endpoint_auth_methods_supported.html"><span><span>revocation_endpoint_auth_methods_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1492476034%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="revocation_endpoint_auth_methods_supported.html">revocation_endpoint_auth_methods_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="777404461%2FProperties%2F-636451221" anchor-label="revocation_endpoint_auth_signing_alg_values_supported" id="777404461%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revocation_endpoint_auth_signing_alg_values_supported.html"><span><span>revocation_endpoint_auth_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="777404461%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="revocation_endpoint_auth_signing_alg_values_supported.html">revocation_endpoint_auth_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1438670173%2FProperties%2F-636451221" anchor-label="scopes_supported" id="-1438670173%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scopes_supported.html"><span><span>scopes_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438670173%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="scopes_supported.html">scopes_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-scope/index.html">KeycloakScope</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-172454060%2FProperties%2F-636451221" anchor-label="subject_types_supported" id="-172454060%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="subject_types_supported.html"><span><span>subject_types_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-172454060%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="subject_types_supported.html">subject_types_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-subject-type/index.html">KeycloakSubjectType</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-736251403%2FProperties%2F-636451221" anchor-label="tls_client_certificate_bound_access_tokens" id="-736251403%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tls_client_certificate_bound_access_tokens.html"><span><span>tls_client_certificate_bound_access_tokens</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736251403%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="tls_client_certificate_bound_access_tokens.html">tls_client_certificate_bound_access_tokens</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="269384758%2FProperties%2F-636451221" anchor-label="token_endpoint" id="269384758%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="token_endpoint.html"><span><span>token_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="269384758%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="token_endpoint.html">token_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1891828379%2FProperties%2F-636451221" anchor-label="token_endpoint_auth_methods_supported" id="1891828379%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="token_endpoint_auth_methods_supported.html"><span><span>token_endpoint_auth_methods_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1891828379%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="token_endpoint_auth_methods_supported.html">token_endpoint_auth_methods_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-auth-method/index.html">KeycloakAuthMethod</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="867285232%2FProperties%2F-636451221" anchor-label="token_endpoint_auth_signing_alg_values_supported" id="867285232%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="token_endpoint_auth_signing_alg_values_supported.html"><span><span>token_endpoint_auth_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="867285232%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="token_endpoint_auth_signing_alg_values_supported.html">token_endpoint_auth_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1371664601%2FProperties%2F-636451221" anchor-label="userinfo_encryption_alg_values_supported" id="-1371664601%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="userinfo_encryption_alg_values_supported.html"><span><span>userinfo_encryption_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1371664601%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="userinfo_encryption_alg_values_supported.html">userinfo_encryption_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="160706789%2FProperties%2F-636451221" anchor-label="userinfo_encryption_enc_values_supported" id="160706789%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="userinfo_encryption_enc_values_supported.html"><span><span>userinfo_encryption_enc_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="160706789%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="userinfo_encryption_enc_values_supported.html">userinfo_encryption_enc_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1192007246%2FProperties%2F-636451221" anchor-label="userinfo_endpoint" id="1192007246%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="userinfo_endpoint.html"><span><span>userinfo_endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1192007246%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="userinfo_endpoint.html">userinfo_endpoint</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1201224203%2FProperties%2F-636451221" anchor-label="userinfo_signing_alg_values_supported" id="-1201224203%2FProperties%2F-636451221" data-filterable-set=":bluegps_sdk:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk:dokkaHtml/release" data-filterable-set=":bluegps_sdk:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="userinfo_signing_alg_values_supported.html"><span><span>userinfo_signing_alg_values_supported</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1201224203%2FProperties%2F-636451221"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="userinfo_signing_alg_values_supported.html">userinfo_signing_alg_values_supported</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-keycloak-algorithm/index.html">KeycloakAlgorithm</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>Synapses S.r.l.s. - https://www.synapseslab.com/</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
