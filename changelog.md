@@ -1,10 +1,20 @@
 # android-bluegps-sdk
 
+### Version 2.0.0
+March 01, 2024
+#### ⬆️ Behavior Changes
+Now Keycloak is used for managing authentication and authorization within your application for this reasons:
+- changed the `initSdk()` function
+- changed `SdkEnvironment` class
+- removed the old authentication system with `sdkKey` and `sdkSecret`
+- changed the access point to `BlueGPSAuthManager` from `BlueGPSAuthManager.shared` to `BlueGPSAuthManager.instance`
+#### ✅ New Features
+- Add new `guestLogin()` function
+- Add `logout()` function
+
+
 ### Version 1.5.3
 January 16, 2024
-#### 🐞 Bug Fixes
-#### ⬆️ Behavior Changes
-#### ✅ New Features
 #### ⚠️ API Changes
 - `getDeviceConfiguration(tagId: String? = null)` API deprecated, use the new `getOrCreateConfiguration(tagId: String? = null)`
 
