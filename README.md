@@ -2,6 +2,9 @@
 Official Android Demo App showcases the BlueGPS SDK features and acts as reference implementation for many of the basic SDK features.
 Getting started requires you setup a **license**.
 
+| Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
+| ---------------- | --------------- | --------------- | --------------- |
+| March 01, 2024   | 2.0.0           | -               | -               |
 
 ## Integration guide
 ### Requirements
