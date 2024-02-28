@@ -1,4 +1,4 @@
-![BlueGPS Logo](images/bluegps_logo.svg)
+![BlueGPS Logo](./documentation/images/bluegps_logo.svg)
 
 # BlueGPS SDK Examples for Android
 Official Android Demo App showcases the BlueGPS SDK features and acts as reference implementation for many of the basic SDK features.
