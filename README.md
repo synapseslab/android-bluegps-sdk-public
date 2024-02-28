@@ -52,7 +52,7 @@ Then add the dependency for BlueGPS-SDK in the `build.gradle` file for your app 
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-demoapp:<version>'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-public:<version>'
 }
 ```
 
@@ -60,7 +60,7 @@ The `version` corresponds to release version, for example:
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-demoapp:1.4.2-rc4'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-public:2.0.0'
 }
 ```
 
