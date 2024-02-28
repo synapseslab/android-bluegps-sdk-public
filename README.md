@@ -3,13 +3,17 @@ Official Android Demo App showcases the BlueGPS SDK features and acts as referen
 Getting started requires you setup a **license**.
 
 
-## Installation
+## Integration guide
+### Requirements
 
-The BlueGPS Android SDK is distributed through Jitpack. It can be integrated through gradle, maven as following:
+Minimum requirements are:
 
-### Gradle
+- Minimum SDK: 21
+- Usage of Android X
 
-Before you add BlueGPS depencencies, add it in your `settings.gradle` at the end of repositories
+### Adding the Library to an existing Android application
+
+Before you add BlueGPS depencencies, update your repositories in the `settings.gradle` file to include this repository
 
 ```gradle
 dependencyResolutionManagement {
@@ -22,7 +26,7 @@ dependencyResolutionManagement {
 }
 ```
 
-Or if you're using an older project setup, add it in your `build.gradle` at the end of repositories
+Or if you're using an older project setup, add this repository  in your project level `build.gradle` file:
 
 ```gradle
 allprojects {
@@ -38,7 +42,7 @@ Then add the dependency for BlueGPS-SDK in the `build.gradle` file for your app 
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-public:<version>'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-demoapp:<version>'
 }
 ```
 
@@ -46,37 +50,12 @@ The `version` corresponds to release version, for example:
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-public:X.Y.Z'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-demoapp:1.4.2-rc4'
 }
 ```
 
-### Maven
-
-Add the JitPack repository to your build file
-
-```maven
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-Then add the dependency
-
-```maven
-dependency>
-    <groupId>com.github.synapseslab</groupId>
-    <artifactId>android-bluegps-sdk-public</artifactId>
-    <version>Tag</version>
-</dependency>
-```
-
-The `Tag` corresponds to release version, for example: `1.4.2`
-
-## Getting Started
-
+## Usage guide
+### Getting Started
 Your first step is initializing the BlueGPSLib, which is the main entry point for all operations in the library. BlueGPSLib is a singleton: you'll create it once and re-use it across your application.
 
 A best practice is to initialize BlueGPSLib in the Application class:
@@ -95,51 +74,33 @@ class App : Application() {
 }
 ```
 
-The BlueGSP-SDK use an `Environment` where integrator have to put SDK data for register the SDK and for create a communication with the BlueGPS Server [see the demo app for detail](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/demo-app/app/src/main/java/com/synapseslab/bluegpssdkdemo/utils/Environment.kt). The management of the environment is demanded to the app.
+The BlueGSP-SDK use an `Environment` where integrator have to put SDK data for register the SDK and for create a communication with the BlueGPS Server [see the demo app for detail](https://github.com/synapseslab/android-bluegps-sdk-demoapp/blob/main/demo-app/app/src/main/java/com/synapseslab/bluegpssdkdemo/utils/Environment.kt). The management of the environment is demanded to the app.
 
 ```kotlin
 object Environment {
 
     private val SDK_ENDPOINT = "{{provided-bluegps-endpoint}}"
-    private val APP_ID = "com.synapseslab.demosdk"
 
-    val sdkEnvironment = SdkEnvironment(
-        sdkEndpoint = SDK_ENDPOINT,
-        appId = APP_ID,
-    )
-}
-```
-
-### App Authentication
-
-The BlueGPS_SDK offers a client for managing authentication and authorization within your application. It leverages [Keycloak](https://www.keycloak.org/) to handle user authentication.
-
-
-For the configuration in this case use `keyCloakParameters` parameter on `initSDK(..)`.
-
-```kotlin
-BlueGPSLib.instance.initSDK(
-    sdkEnvironment = Environment.sdkEnvironment,
-    context = applicationContext,
-    keyCloakParameters = Environment.keyCloakParameters
-)
-```
-
-where `keyCloakParameters` is this object
-
-```kotlin
     val keyCloakParameters = KeyCloakParameters(
         authorization_endpoint = "https://[BASE-URL]/realms/[REALMS]/protocol/openid-connect/auth",
         token_endpoint = "https://[BASE-URL]/realms/[REALMS]/protocol/openid-connect/token",
-        redirect_uri = "{{provided-redirect-uri}}",
+        redirect_uri = "{{HOST}}://{{SCHEME}}",
         clientId = "{{provided-client-secret}}", // for user authentication
         userinfo_endpoint = "https://[BASE-URL]/realms/[REALMS]/protocol/openid-connect/userinfo",
         end_session_endpoint = "https://[BASE-URL]/realms/[REALMS]/protocol/openid-connect/logout",
         guestClientSecret = "{{provided-guest-client-secret}}", // for guest authentication
         guestClientId = "{{provided-guest-client-id}}" // for guest authentication
     )
+
+    val sdkEnvironment = SdkEnvironment(
+        sdkEndpoint = SDK_ENDPOINT,
+        keyCloakParameters = keyCloakParameters,
+    )
+}
 ```
 
+### App Authentication
+The BlueGPS_SDK offers a client for managing authentication and authorization within your application. It leverages [Keycloak](https://www.keycloak.org/) to handle user authentication.
 
 BlueGPS provides 2 kinds of authentication: 
     
@@ -156,11 +117,8 @@ If you want only the Guest authentication, you must set the **`guestClientSecret
 This means that we don't have a user that has to login but we use client credentials and there is not an individual user for each app install. Instead BlueGPS treats the user account as a "guest"
 In this case multiple devices can use the same client credentials to be authenticated and BlueGPS will register the user as a device, and not as a formal Keycloak user.
 
-<br />
-
+> [!NOTE]
 > This paramaters are provided by **Synapses** after the purchase of the **BlueGPS license**.
-
-<br />
 
 Finally in your `AndroidManifest.xml` add this and change `host` and `scheme` with your configuration.
 
@@ -182,25 +140,62 @@ Finally in your `AndroidManifest.xml` add this and change `host` and `scheme` wi
 
 Now your app is ready for use keycloak. See `KeycloakActivity.kt` example for an example of login, logout or refresh token.
 
-#### Legacy Authentication
-
-To ensure backward compatibility with applications that still utilize the old authentication mechanism, only set the `SDK_KEY` and `SDK_SECRET` values. This practice allows seamless integration with legacy apps while maintaining the necessary authentication parameters.
+### Authentication status
+Once the SDK is correctly setup, you can ask for authentication status, by using the following accessor facility:
 
 ```kotlin
-object Environment {
+BlueGPSAuthManager.instance.currentTokenPayload
+```
 
-    private val SDK_ENDPOINT = "{{provided-bluegps-endpoint}}"
-    private val SDK_KEY = "{{provided-sdk-key}}"
-    private val SDK_SECRET = "{{provided-sdk-secret}}"
-    private val APP_ID = "com.synapseslab.demosdk"
+`currentTokenPayload` expose the current token object (if any). You can also ask for validity as follow:
 
-    val sdkEnvironment = SdkEnvironment(
-        sdkEndpoint = SDK_ENDPOINT,
-        appId = APP_ID,
-        sdkKey = SDK_KEY,
-        sdkSecret = SDK_SECRET,
-    )
+```kotlin
+// check if access token is still valid
+BlueGPSAuthManager.instance.currentTokenPayload.accessTokenValid
+
+// check if refresh token is still valid
+BlueGPSAuthManager.instance.currentTokenPayload.refreshTokenValid
+```
+
+For **obtain the current access token** use the following function:
+```kotlin
+BlueGPSAuthManager.instance.accessToken()
+```
+
+### Guest login
+For exec a guest login use the following function:
+
+```kotlin
+when (val result = BlueGPSAuthManager.instance.guestLogin()) {
+    is Resource.Error -> {
+        Log.e(TAG, result.message)
+    }
+
+    is Resource.Exception -> {
+        Log.e(TAG, result.e.localizedMessage ?: "Exception")
+    }
+
+    is Resource.Success -> {
+        Log.v(TAG, "Login in guest mode, ${result.data}")
+        loginGuestMode.value = "Login in guest mode"
+
+        // update access token on the environment
+        Environment.sdkEnvironment.sdkToken = result.data.access_token
+    }
 }
+```
+
+### Logout
+For logout, there's a specific call that will clear all credentials both from your side and backend:
+
+```kotlin
+BlueGPSAuthManager.instance.logout(handleCallback = {
+    if (it) {
+        Log.d(TAG, "SUCCESS logged out")
+    } else {
+        Log.e(TAG, "ERROR logged out")
+    }
+})
 ```
 
 
