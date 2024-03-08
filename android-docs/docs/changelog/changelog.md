@@ -3,7 +3,8 @@
 ### Version 2.0.0
 March 01, 2024
 #### ⬆️ Behavior Changes
-Now Keycloak is used for managing authentication and authorization within your application for this reasons:
+Now Keycloak is used for managing authentication and authorization within your application.
+
 - changed the `initSdk()` function
 - changed `SdkEnvironment` class
 - removed the old authentication system with `sdkKey` and `sdkSecret`
