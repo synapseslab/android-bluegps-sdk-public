@@ -212,7 +212,7 @@ BlueGPSAuthManager.instance.logout(handleCallback = {
 
 ## SDK Changelog
 
-[Changelog link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/changelog.md)
+[Changelog link](https://synapseslab.com/android-bluegps-sdk-public/changelog/changelog.html)
 
 ## Documentation
 For comprehensive details about BlueGPS SDK, please refer to the complete documentation available here.

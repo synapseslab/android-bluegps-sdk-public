@@ -1,4 +1,4 @@
-# android-bluegps-sdk
+# Changelog: android-bluegps-sdk
 
 ### Version 2.0.0
 March 01, 2024
