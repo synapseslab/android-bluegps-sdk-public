@@ -1,7 +1,7 @@
 > [!CAUTION]
 > This repository is under development doesn't use for now.
 
-![BlueGPS Logo](./documentation/images/synapses_bluegps.png)
+![BlueGPS Logo](./android-docs/images/synapses_bluegps.png)
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
@@ -218,10 +218,10 @@ BlueGPSAuthManager.instance.logout(handleCallback = {
 For comprehensive details about BlueGPS SDK, please refer to the complete documentation available here.
 
 **For version 2+** refer this
-[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/documentation/v2/v2.md)
+[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/android-docs/v2/v2.md)
 
 For previous versions refer this
-[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/documentation/v1/bluegps_android_sdk.md)
+[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/android-docs/v1/bluegps_android_sdk.md)
 
 
 ## License
