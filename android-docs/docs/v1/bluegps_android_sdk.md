@@ -1,4 +1,4 @@
-BlueGPS Android SDK
+BlueGPS Android SDK - version 1
 ==
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
