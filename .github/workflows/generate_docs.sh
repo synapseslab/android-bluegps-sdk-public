@@ -8,6 +8,7 @@
 
 set -ex
 
+
 # Build the site locally
 cd ./android-docs
 python3 -m venv venv
