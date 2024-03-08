@@ -5,7 +5,7 @@ BlueGPS Android SDK
 | ---------------- | --------------- | --------------- | --------------- |
 | January 16, 2024 | 1.5.3           | -               | -               |
 
-# 1. Introduction
+## 1. Introduction
 
 This document holds a general guide for the integration of the BlueGPS SDK library into an Android
 application. The BlueGPS SDK implements the communication with the BlueGPS server allowing Android
@@ -15,9 +15,9 @@ Applications to make use of the system.
 change.*
 
 
-# 2. Integration guide
+## 2. Integration guide
 
-## 2.1. Requirements
+### 2.1. Requirements
 
 Minimum requirements are:
 
@@ -71,7 +71,7 @@ dependencies {
 
 <div style="page-break-after: always;"></div>
 
-# 3. Usage guide
+## 3. Usage guide
 
 If doesn’t exists create an `Application` class and in `onCreate()` method call the `initSDK()`
 method to initialize the BlueGPS SDK.
@@ -153,7 +153,7 @@ run on background.
 
 <div style="page-break-after: always;"></div>
 
-# 4. Use BlueGPS Advertising Service
+## 4. Use BlueGPS Advertising Service
 
 For use the BlueGPS Advertising service, defines callbacks for service binding, passed to `bindService()`
 
@@ -244,7 +244,7 @@ blueGPSAdvertisingService?.stopAdv()
 <br />
 <br />
 
-## 4.1. Optional
+### 4.1. Optional
 
 If you are interested to receiver logs and display info about the status of the Service,
 subclass ``BroadcastReceiver`` and implement the ``onReceive(...)`` method.
@@ -345,7 +345,7 @@ by your map:
 
 <img src="../images/map_view_loaded.png" alt="Map view loaded" width="300"/>
 
-## 5.1 ToolboxGUI
+### 5.1 ToolboxGUI
 
 The demo app show a Toolbox GUI for configure behaviours and visual components displayed on the map.
 
@@ -355,7 +355,7 @@ change orientation, change the size of the buttons.
 
 <img src="../images/map_view_toolbox.png" alt="Toolbox GUI for map view" width="300"/>
 
-## 5.2 Map Listener
+### 5.2 Map Listener
 
 BlueGPSMapView could trigger your app remotely from the server. To handle an event click on the map,
 it's necessary setup the listener.
@@ -782,7 +782,7 @@ Retrieve position marker.
 
 <div style="page-break-after: always;"></div>
 
-# 6. Server Sent Events
+## 6. Server Sent Events
 
 The purpose of diagnostic API is to give an indication to the integrator of the status of the
 BlueGPS system.
@@ -795,7 +795,7 @@ The diagnostic is designed to include different info like:
     - Micronpass
     - Quuppa
 
-## 6.1 Diagnostic SSE
+### 6.1 Diagnostic SSE
 
 For diagnostic if a tag is `ACTIVE` or `NOT_ACTIVE`, `BlueGPSLib` expose a specific call `startDiagnostic(..)` where:
 - `diagnosticSseRequest` is a list of tags; 
