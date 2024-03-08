@@ -1,6 +1,3 @@
-> [!CAUTION]
-> This repository is under development doesn't use for now.
-
 ![BlueGPS Logo](images/synapses_bluegps.png)
 
 <p align="center">
