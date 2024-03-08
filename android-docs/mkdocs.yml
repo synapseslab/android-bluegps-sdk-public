@@ -1,0 +1,71 @@
+site_name: BlueGPS Android SDK
+site_description: "BlueGPS Android SDK - Documentation"
+site_author: Synapses srls.
+site_dir: html
+repo_url: https://github.com/synapseslab/android-bluegps-sdk-public
+
+nav:
+  - 'Getting Started': index.md
+  - 'Version 2': v2/v2.md
+  - 'Version 1': v1/bluegps_android_sdk.md
+  - 'API': api/index.html
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: blue
+      accent: 'dark-blue'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: blue
+      accent: 'light-blue'
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search:
+      lang: en
+  - offline:
+      enabled: true
+
+markdown_extensions:
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+      pygments_lang_class: true
+      auto_title: true
+  - pymdownx.superfences
+  - codehilite:
+      guess_lang: false
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.critic
+  - admonition
+  - pymdownx.details
+  - toc:
+      permalink: true
+  - md_in_html
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

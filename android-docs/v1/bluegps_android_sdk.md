@@ -139,9 +139,9 @@ Demo application shows two authentication options:
 <br />
 <br />
 
-<img src="images/guest_mode.png" alt="Guest Mode" width="300"/>
+<img src="../images/guest_mode.png" alt="Guest Mode" width="300"/>
 
-<img src="images/jwt_mode.png" alt="JWT Mode" width="300"/>
+<img src="../images/jwt_mode.png" alt="JWT Mode" width="300"/>
 
 <br />
 <br />
@@ -239,7 +239,7 @@ blueGPSAdvertisingService?.stopAdv()
 <br />
 <br />
 
-<img src="images/start_service.png" alt="Start Service" width="300"/>
+<img src="../images/start_service.png" alt="Start Service" width="300"/>
 
 <br />
 <br />
@@ -290,7 +290,7 @@ can import the component in your xml layout or programmatically inflate it.
 Before can be used, `BlueGPSMapView` should be initialized. Otherwise you will see a loading
 animation like below:
 
-<img src="images/map_view_loading.png" alt="Loading map view" width="300"/>
+<img src="../images/map_view_loading.png" alt="Loading map view" width="300"/>
 
 In order to configure properly the object you need call the `initMap()`
 
@@ -343,7 +343,7 @@ private var configurationMap = ConfigurationMap(
 At this point the configuration is injected and the loading animation should disappear and replaced
 by your map:
 
-<img src="images/map_view_loaded.png" alt="Map view loaded" width="300"/>
+<img src="../images/map_view_loaded.png" alt="Map view loaded" width="300"/>
 
 ## 5.1 ToolboxGUI
 
@@ -353,7 +353,7 @@ Once modified, the new model could be injected into the current configuration. T
 some of the functions to be able to interact with the map control bar to enable or disable it,
 change orientation, change the size of the buttons.
 
-<img src="images/map_view_toolbox.png" alt="Toolbox GUI for map view" width="300"/>
+<img src="../images/map_view_toolbox.png" alt="Toolbox GUI for map view" width="300"/>
 
 ## 5.2 Map Listener
 
@@ -1088,7 +1088,7 @@ where
 
 It's present an example activity called `ShowResourcesActivity.kt` that show the utility and the use of this network call.
 
-<img src="images/search_resources_view.png" alt="Search View" width="300"/>
+<img src="../images/search_resources_view.png" alt="Search View" width="300"/>
 
 <div style="page-break-after: always;"></div>
 
