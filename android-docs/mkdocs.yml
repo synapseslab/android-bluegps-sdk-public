@@ -8,6 +8,8 @@ nav:
   - 'Getting Started': index.md
   - 'Version 2': v2/v2.md
   - 'Version 1': v1/bluegps_android_sdk.md
+  -
+  - 'Changelog': changelog/changelog.md
   - 'API': api/index.html
 
 theme:
