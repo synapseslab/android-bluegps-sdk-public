@@ -1,7 +1,7 @@
 > [!CAUTION]
 > This repository is under development doesn't use for now.
 
-![BlueGPS Logo](../../images/synapses_bluegps.png)
+![BlueGPS Logo](../images/synapses_bluegps.png)
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
