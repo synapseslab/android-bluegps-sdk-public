@@ -218,10 +218,10 @@ BlueGPSAuthManager.instance.logout(handleCallback = {
 For comprehensive details about BlueGPS SDK, please refer to the complete documentation available here.
 
 **For version 2+** refer this
-[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/android-docs/v2/v2.md)
+[Documentation link](https://synapseslab.com/android-bluegps-sdk-public/v2/v2.html)
 
 For previous versions refer this
-[Documentation link](https://github.com/synapseslab/android-bluegps-sdk-public/blob/main/android-docs/v1/bluegps_android_sdk.md)
+[Documentation link](https://synapseslab.com/android-bluegps-sdk-public/v1/bluegps_android_sdk.html)
 
 
 ## License
