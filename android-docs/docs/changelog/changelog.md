@@ -1,5 +1,21 @@
 # Changelog: android-bluegps-sdk
 
+### Version 2.0.1
+April 02, 2024
+#### ⬆️ Behavior Changes
+- In the `ScheduleRequest` and `ScheduleElement` classes attendees parameter has changed in `typeAttendees`.
+#### ✅ New Features
+- Create new `getBookingUserList()` API that return a list of user to invite to booking.
+- Create new `TypeAttendee` class. 
+#### 🐞 Bug Fixes
+- Remediation for Intent Redirection Vulnerability on `AuthenticationActivity.onNewIntent()`
+#### ⚠️ API Changes
+- In `deleteNotifications()` and `readNotifications()` API now accepts type parameter.
+- In `deleteNotifications()` and `readNotifications()` API changed the return type to `UpdateNotificationResponse` class.
+- `getWidgetHome()` API now accepts `tagId` that is assigned to the current user
+- `startWidgetIdEvent()` API now is `POST` and accepts `checkTimeout` parameter.
+
+
 ### Version 2.0.0
 March 01, 2024
 #### ⬆️ Behavior Changes
