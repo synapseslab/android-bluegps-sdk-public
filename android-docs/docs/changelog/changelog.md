@@ -1,5 +1,17 @@
 # Changelog: android-bluegps-sdk
 
+### Version 2.0.2
+April 19, 2024
+#### ✅ New Features
+- Create new `getVisitorTemplate()` API that return an AbstractComponent that represent the visitor form. Used to build the UI.
+- Create new `saveVisitor()` API that save the current visitor to BlueGPS backend.
+- Create new `getVisitTemplate()` API that return an AbstractComponent that represent the visit form flow. Used to build the UI.
+- Create new `saveVisit()` API that save the current visitor form to BlueGPS backend.
+- Create new `searchVisitor()` API that search for a visitor by last name.
+- Add `direction` parameter to `NavigationStats` class that return the directions during navigation.
+- Add `getWidgetRoom()` API that returns all widgets for a specific room.
+- Add `startWidgetRoomIdEvent()` SSE API for stream events of room widgets.
+
 ### Version 2.0.1
 April 02, 2024
 #### ⬆️ Behavior Changes
