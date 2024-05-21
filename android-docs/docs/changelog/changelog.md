@@ -1,4 +1,17 @@
-# Changelog: android-bluegps-sdk
+# Changelog: `android-bluegps-sdk`
+
+### Version 2.0.3
+May 16, 2024
+#### ✅ New Features
+- Created new `getAvailableSlots()` API that return available time slots for the specific resource.
+- Created new `keepCredentialsAuth()` API only for the PIF build SDK
+- Created new `qrCodeAuth()` API that perform a login with a qrcode.
+#### ⚠️ API Changes
+- Changed `AuthParameters` model, removed `microsoftToken`, `basic` and `authHeader` paramaters
+- Changed `searchVisitor()` API, `lastName` parameter is now optional and add optional `email` parameter
+#### 🐞 Bug Fixes
+- Fix an internal bug on refresh token for guest mode authentication.
+
 
 ### Version 2.0.2
 April 19, 2024
