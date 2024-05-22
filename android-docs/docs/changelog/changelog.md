@@ -1,5 +1,10 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.4
+May 22, 2024
+#### ⚠️ API Changes
+- Changed `findResources()` API all paramaters now are optional.
+
 ### Version 2.0.3
 May 16, 2024
 #### ✅ New Features
