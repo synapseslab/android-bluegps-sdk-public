@@ -1,5 +1,13 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.5
+May 30, 2024
+#### ✅ New Features
+- add `userTagId()` API function that return the tagId assigned to the user if exist.
+- add `saveUserTagId()` API function to save the tagId assigned to the user.
+#### ⬆️ Behavior Changes
+- `BlueGPSAdvertisingService` save only the tagId as String
+
 ### Version 2.0.4
 May 22, 2024
 #### ⚠️ API Changes
