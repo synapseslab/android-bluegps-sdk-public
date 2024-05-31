@@ -1,5 +1,12 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.6
+May 31, 2024
+#### ⬆️ Behavior Changes
+- Changed all handle SSE events with `okhttp-sse` library.
+#### 🐞 Bug Fixes
+- Fix a bug `startNotifyPositionChanges()`.
+
 ### Version 2.0.5
 May 30, 2024
 #### ✅ New Features
