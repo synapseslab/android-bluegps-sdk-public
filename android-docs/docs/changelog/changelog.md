@@ -1,5 +1,16 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.7
+June 10, 2024
+#### ✅ New Features
+- Add `updateTicketFormManager()` API save the entire form that the interface will have to build..
+- Add `minStart` and `maxEnd` attributes to `ScheduleInterval`.
+#### ⬆️ Behavior Changes
+#### ⚠️ API Changes
+- Changed `getUUID()` API, now return a `String`.
+#### 🐞 Bug Fixes
+- Fix a bug when save the generated `uuid`.
+
 ### Version 2.0.6
 May 31, 2024
 #### ⬆️ Behavior Changes
