@@ -1,5 +1,15 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.8
+June 24, 2024
+#### ✅ New Features
+- Add `resetPath()` API to BlueGPSMapView for clear the draw path on the map.
+- Add `resetDataAndTag()` API to BlueGPSMapView for clear all the data and the tag draw on the map.
+- Add `resetAll()` API to BlueGPSMapView for clear all elements draw on the map.
+- Add `setTag()` API to BlueGPSMapView for draw the tagId on the map and follow it if true, otherwise only draw the tagId.
+#### 🐞 Bug Fixes
+- In some cases the assigned `tagId` was not saved correctly.
+
 ### Version 2.0.7
 June 10, 2024
 #### ✅ New Features
