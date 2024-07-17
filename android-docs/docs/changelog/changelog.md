@@ -1,5 +1,14 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.9
+July 17, 2024
+#### ✅ New Features
+- Add `getCurretPosition(tagId: String)` API that returns the current position of the tag inside the building.
+#### ⚠️ API Changes
+- Removed `WidgetSectionEditable` class.
+#### 🐞 Bug Fixes
+- Fix handle `constraints` attribute on `FilterElement` class
+
 ### Version 2.0.8
 June 24, 2024
 #### ✅ New Features
