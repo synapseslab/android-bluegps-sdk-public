@@ -3,7 +3,7 @@
 ### Version 2.0.9
 July 17, 2024
 #### ✅ New Features
-- Add `getCurretPosition(tagId: String)` API that returns the current position of the tag inside the building.
+- Add `getCurrentPosition(tagId: String)` API that returns the current position of the tag inside the building.
 #### ⚠️ API Changes
 - Removed `WidgetSectionEditable` class.
 #### 🐞 Bug Fixes
