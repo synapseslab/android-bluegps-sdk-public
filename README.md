@@ -9,7 +9,7 @@
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
-| July 17, 2024   | 2.0.9         | -               | -               |
+| November 13, 2024   | 2.0.10         | -               | -               |
 
 ## Integration guide
 ### Requirements
