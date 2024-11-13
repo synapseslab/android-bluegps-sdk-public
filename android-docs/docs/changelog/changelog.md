@@ -1,5 +1,18 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.10
+November 13, 2024
+#### ✅ New Features
+- Add `getCurrentMapRotationDeg()` API to BlueGPSMapView that return the actual map rotation
+- Add `heading` attribute to `BGPGpsPosition` class
+- Add handle of `heading` for Advertising Service
+- Add handle of `heading` for BlueGPSLocationManager on core `bluegps_sdk` module
+- Add `resetCompass()` API to BlueGPSMapView for reset the compass of the follow tag on the map
+#### ⚠️ API Changes
+- Changed `resetCompass(resetIcon: Boolean)` API to BlueGPSMapView for reset the compass of the follow tag on the map
+- Changed `setCompass(deg: Double, rotateMap: Boolean = false)` API to BlueGPSMapView, add `rotateMap` parameter
+#### 🐞 Bug Fixes
+
 ### Version 2.0.9
 July 17, 2024
 #### ✅ New Features
