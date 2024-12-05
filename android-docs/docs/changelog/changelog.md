@@ -1,5 +1,14 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 2.0.11
+December 05, 2024
+#### ✅ New Features
+- Add `setLanguage` API to send the current language of the user's mobile device to the backend.
+- Add `getNavigationPath` API to get the list of the navigation path.
+- Add `gotoFloorBy` API to go to specified floor by floorId.
+#### ⚠️ API Changes
+#### 🐞 Bug Fixes
+
 ### Version 2.0.10
 November 13, 2024
 #### ✅ New Features
