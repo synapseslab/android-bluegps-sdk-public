@@ -11,7 +11,7 @@
 
 Minimum requirements are:
 
-- Minimum SDK: 21
+- Minimum SDK: 23
 - Usage of Android X
 
 ### Adding the Library to an existing Android application

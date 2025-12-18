@@ -1,0 +1,10 @@
+/* Header bar background */
+.md-header {
+    background-color: #2565E5 !important;
+}
+
+/* Header links text color (optional) */
+.md-header .md-header-nav__link,
+.md-header .md-header-nav__title {
+    color: white !important;
+}
