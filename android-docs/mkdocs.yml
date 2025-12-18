@@ -13,6 +13,8 @@ nav:
 
 theme:
   name: material
+  logo: images/synapses_bluegps.png   # path relative to the docs/ folder
+  favicon: images/favicon.ico  # optional
   features:
     - navigation.sections
     - navigation.top
@@ -21,6 +23,8 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - toc.integrate
+    - navigation.expand
   language: en
   palette:
     # Palette toggle for light mode
