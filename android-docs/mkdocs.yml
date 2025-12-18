@@ -30,7 +30,7 @@ theme:
     # Palette toggle for light mode
     - scheme: default
       media: "(prefers-color-scheme: light)"
-      primary: blue
+      primary: "#2565E5"
       accent: 'dark-blue'
       toggle:
         icon: material/brightness-7
@@ -39,7 +39,7 @@ theme:
     # Palette toggle for dark mode
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
-      primary: blue
+      primary: "#2565E5"
       accent: 'light-blue'
       toggle:
         icon: material/brightness-4
