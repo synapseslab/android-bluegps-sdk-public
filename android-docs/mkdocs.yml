@@ -67,8 +67,6 @@ markdown_extensions:
   - pymdownx.critic
   - admonition
   - pymdownx.details
-  - toc:
-      permalink: true
   - md_in_html
   - attr_list
   - pymdownx.emoji:
