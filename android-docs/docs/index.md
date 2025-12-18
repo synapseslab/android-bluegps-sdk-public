@@ -9,7 +9,7 @@
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
-| February 19, 2025   | 2.0.13           | -               | -               |
+| December 18, 2025   | 5.0.0          | -               | -               |
 
 ## Integration guide
 ### Requirements
@@ -51,14 +51,6 @@ Then add the dependency for BlueGPS-SDK in the `build.gradle` file for your app 
 ```gradle
 dependencies {
     implementation 'com.github.synapseslab:android-bluegps-sdk-public:<version>'
-}
-```
-
-The `version` corresponds to release version, for example:
-
-```gradle
-dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-public:2.0.9'
 }
 ```
 

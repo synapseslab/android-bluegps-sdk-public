@@ -1,5 +1,20 @@
 # Changelog: `android-bluegps-sdk`
 
+### Version 5.0.0
+December 18, 2025
+#### ✅ New Features
+- Added ScanBeacon Service to locate users within iBeacon environments.
+- Add `getAllUserSettings` API to Get all the user settings.
+- Add `getUserProperty` API to Get a specific user property settings.
+- Add `setUserProperty` API to Update the user settings.
+- Add `getNearbyBookings` API to Get booking for a specific target username.
+- Add `showResourceNear` API to `BlueGPSMapView` to show the resource list near to the target resource on map.
+- Add `searchByBooking` API to Find resources based/nearby on a booking element.
+- Add `getRecurrenceMonth` API to Get recurrence month values.
+- Add `swapBooking` API to Execute a swap booking request.
+- Add `infoBanner` attribute to `Resource` class.
+- Changed `getLanguages` API.
+
 ### Version 2.0.11
 December 05, 2024
 #### ✅ New Features
