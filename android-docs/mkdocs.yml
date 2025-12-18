@@ -13,7 +13,7 @@ nav:
 
 theme:
   name: material
-  logo: images/synapses_bluegps.png   # path relative to the docs/ folder
+  logo: images/synapses-bluegps.png   # path relative to the docs/ folder
   favicon: images/favicon.ico  # optional
   features:
     - navigation.sections
