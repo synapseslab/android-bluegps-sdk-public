@@ -6,8 +6,7 @@ repo_url: https://github.com/synapseslab/android-bluegps-sdk-public
 
 nav:
   - 'Getting Started': index.md
-  - 'Version 2': v2/v2.md
-  - 'Version 1': v1/bluegps_android_sdk.md
+  - 'Documentation': doc/doc.md
   - 'Changelog': changelog/changelog.md
   - 'API': api/index.html
 

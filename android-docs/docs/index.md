@@ -4,7 +4,7 @@
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
-| December 18, 2025   | 5.0.0          | -               | -               |
+| February 4, 2026   | 6.0.0          | -               | -               |
 
 ## Integration guide
 ### Requirements
@@ -201,11 +201,8 @@ BlueGPSAuthManager.instance.logout(handleCallback = {
 ## Documentation
 For comprehensive details about BlueGPS SDK, please refer to the complete documentation available here.
 
-**For version 2+** refer this
-[Documentation link](https://synapseslab.com/android-bluegps-sdk-public/v2/v2.html)
+[Documentation link](https://synapseslab.com/android-bluegps-sdk-public/doc/doc.html)
 
-For previous versions refer this
-[Documentation link](https://synapseslab.com/android-bluegps-sdk-public/v1/bluegps_android_sdk.html)
 
 
 ## License
