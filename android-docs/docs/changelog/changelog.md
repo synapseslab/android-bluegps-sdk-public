@@ -1,5 +1,106 @@
 # Changelog: `android-bluegps-sdk`
 
+## android-bluegps-sdk                                                                                                            
+### Version 6.0.7                                                                                                                 
+**18/02/2026**                                                                                                                    
+                                                                                                                                  
+#### ✅ New Features                                                                                                               
+- **BlueGPSAdvertisingService** — Added **Stop** action button to the foreground notification,                                    
+  allowing the user to stop the service directly from the notification drawer.
+- **Localisation** — Added translations for `no_gps_data`, `foreground_service_title` and
+  `stop` strings in: Italian, German, French, Spanish, Dutch, Arabic.
+
+#### ⚠️ Manifest Changes
+- `BlueGPSAdvertisingService` now declares `android:foregroundServiceType="connectedDevice"`
+  and `android:exported="false"`.
+- Added `FOREGROUND_SERVICE_CONNECTED_DEVICE` permission.
+
+#### 🐞 Bug Fixes
+- **BlueGPSAdvertisingService** — Fixed `ForegroundServiceDidNotStartInTimeException`:
+  `startForeground()` is now called immediately in both `onCreate()` and `onStartCommand()`,
+  before any Bluetooth or permission checks.
+- **BlueGPSAdvertisingService** — Fixed `IllegalArgumentException`: changed
+  `foregroundServiceType` from `location` to `connectedDevice`.
+- **BlueGPSAdvertisingService** — Fixed BLE advertising resource leak: `onDestroy()` now
+  calls `stopAdv()`.
+- **BlueGPSAdvertisingService** — Fixed `NullPointerException` in `startAdv()`: replaced
+  unsafe `!!` calls with explicit null guard.
+- **BlueGPSAdvertisingService** — Fixed redundant double `TagID` initialization in
+  `startAdv(AndroidAdvConfiguration)`.
+- **BlueGPSAdvertisingService** — Fixed thread-safety: `dfPacketAdvRunning` is now
+  `AtomicBoolean`.
+- **BlueGPSAdvertisingService** — Fixed `startForeground()` API version guard
+  (`>= Q` instead of `> Q`).
+
+
+### Version 6.0.6
+**12/02/2026**
+
+#### ✅ New Features
+- Added `isBookingNearColleague` parameter to `getAgendaDay()` and `getUslots()` APIs
+  to filter bookings near colleagues.
+
+#### 🐞 Bug Fixes
+- Fixed `hasChanged` initialValue moved to constructor.
+- Added login retry logic on failure.
+
+
+### Version 6.0.2 – 6.0.5
+**23/01/2026 – 06/02/2026**
+
+#### ⬆️ Behavior Changes
+- Improved logout handling for guest users and missing parameters.
+- Simplified Keycloak login: removed explicit `useCustomTabs` flag.
+- Handled auth redirects and cancellation flow.
+
+
+### Version 6.0.1
+**23/01/2026**
+
+#### ⬆️ Behavior Changes
+- `BlueGPS` singleton introduced as a typealias for `BlueGPSLib`.
+- Updated Maven repository URL.
+
+
+### Version 5.2.19 – 5.2.23
+**08/01/2026 – 21/01/2026**
+
+#### ✅ New Features
+- Added RFID activation API (`activateRFID()`).
+- Added `bookingId` parameter to `getAgendaDay()` and booking API.
+- Added tag-based position notification and config update.
+
+#### ⬆️ Behavior Changes
+- Replaced notification icon vector with webp images.
+- Refactored RFID activation to use a dedicated request model.
+
+
+### Version 5.2.18
+**07/01/2026**
+
+#### ✅ New Features
+- Added RFID activation API support.
+
+
+### Version 5.2.0
+**17/12/2025**
+
+#### ✅ New Features
+- Added `ScanBeaconService` to locate users within iBeacon environments.
+- Added `getAllUserSettings()` API.
+- Added `getUserProperty()` API.
+- Added `setUserProperty()` API.
+- Added `getNearbyBookings()` API.
+- Added `showResourceNear()` API to `BlueGPSMapView`.
+- Added `searchByBooking()` API.
+- Added `getRecurrenceMonth()` API.
+- Added `swapBooking()` API.
+- Added `infoBanner` attribute to `Resource` class.
+
+#### ⚠️ API Changes
+- Changed `getLanguages()` API.
+
+
 ### Version 5.0.0
 December 18, 2025
 #### ✅ New Features
