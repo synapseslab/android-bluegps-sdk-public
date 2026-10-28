@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BlueGPSAuthDiagnostics</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    bluegps_sdk
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":bluegps_sdk/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":bluegps_sdk/main"
+                                       data-filter=":bluegps_sdk/main"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    bluegps_sdk
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="bluegps_sdk::com.synapseslab.bluegps_sdk.authentication.core/BlueGPSAuthDiagnostics///PointingToDeclaration//-1942305456">
+  <div class="breadcrumbs"><a href="../../../index.html">bluegps_sdk</a><span class="delimiter">/</span><a href="../index.html">com.synapseslab.bluegps_sdk.authentication.core</a><span class="delimiter">/</span><span class="current">BlueGPSAuthDiagnostics</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Blue</span><wbr></wbr><span>GPSAuth</span><wbr></wbr><span><span>Diagnostics</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">BlueGPSAuthDiagnostics</a></div><p class="paragraph">Optional hook that reports how the interactive login flow actually unfolded.</p><p class="paragraph">The browser callback is the one step of the flow an integrator cannot observe: it is handled inside the SDK, in an Activity the app never touches, and by the time the app hears about it all that is left is a result code. When the callback goes wrong the app therefore sees the same &quot;no result&quot; for a redirect that never arrived, a code that was rejected, a state that did not match and a token exchange that failed — four different problems with four different remedies. On the environments where this matters (a host reachable only through a corporate VPN, devices that cannot be attached to a debugger, release builds where R8 has stripped every <code class="lang-kotlin">android.util.Log</code> call) there is no other way to tell them apart.</p><p class="paragraph">Set <a href="sink.html">sink</a> and the SDK will report each step. Nothing is recorded unless a sink is set, and the SDK never logs the events itself.</p><h2 class="">What is reported</h2><p class="paragraph">Enum-like names, booleans and numbers only — never a token, an authorization code, a verifier or a URL. In particular the identity provider's error text is deliberately NOT reported: it is free text nobody here controls, and it can carry a URL or echo the request back. What replaces it says as much without that risk — an HTTP status distinguishes a rejected code from a server fault, an exception class name distinguishes an unreachable endpoint. The payload is therefore safe to persist and to keep enabled in a release build.</p><table><thead><tr><th>Event</th><th>Details</th></tr></thead><tbody><tr><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">redirect_received</code></td><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">instance</code> (<code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">new</code>/<code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">existing</code>), <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">flow</code>, <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">hasCode</code>, <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">hasVerifier</code>, <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">stateMatches</code></td></tr><tr><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">exchange_result</code></td><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">ok</code>, plus <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">httpStatus</code> or <code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">exception</code> when it failed</td></tr><tr><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">result_delivered</code></td><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">flow</code></td></tr><tr><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">cancelled</code></td><td><code class="org.jetbrains.dokka.pages.commenttable@18b3caac lang-kotlin">reason</code></td></tr></tbody></table><p class="paragraph"><code class="lang-kotlin">instance=new</code> is the interesting one: it means the callback did not reach the Activity the integrator started for result, which is the shape of the failure fixed in 6.2.9.</p><h2 class="">Usage</h2><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">BlueGPSAuthDiagnostics.sink = BlueGPSAuthDiagnostics.Sink { event, details -&gt;<br>    myTrace.record(event, details)<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1432309383%2FClasslikes%2F-1942305456" anchor-label="Sink" id="-1432309383%2FClasslikes%2F-1942305456" data-filterable-set=":bluegps_sdk/main"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk/main" data-filterable-set=":bluegps_sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sink/index.html"><span><span>Sink</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1432309383%2FClasslikes%2F-1942305456"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-sink/index.html">Sink</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="87505604%2FProperties%2F-1942305456" anchor-label="sink" id="87505604%2FProperties%2F-1942305456" data-filterable-set=":bluegps_sdk/main"></a>
+          <div class="table-row" data-filterable-current=":bluegps_sdk/main" data-filterable-set=":bluegps_sdk/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sink.html"><span><span>sink</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="87505604%2FProperties%2F-1942305456"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-volatile/index.html"><span class="token annotation builtin">Volatile</span></a></div></div><span class="token keyword">var </span><a href="sink.html">sink</a><span class="token operator">: </span><a href="-sink/index.html">BlueGPSAuthDiagnostics.Sink</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Null by default: no sink, no reporting. Written from the app, read from the UI thread.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>Synapses srl - https://www.synapseslab.com/</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

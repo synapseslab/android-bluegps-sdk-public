@@ -19,8 +19,8 @@ The library use:
 - [Coroutines](https://kotlinlang.org/docs/coroutines-guide.html) - A coroutine is a concurrency
   design pattern that you can use on Android to simplify code that executes asynchronously.
 - [Retrofit](https://github.com/square/retrofit) - A type-safe HTTP client for Android and Java.
-- [Encrypted SharedPreference](https://developer.android.com/topic/security/data) Used to store
-  key-value data using encryption.
+- [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - Used
+  to store the session, so that it survives process death.
 
 
 
@@ -32,6 +32,9 @@ The library use:
 Minimum requirements are:
 
 - Minimum SDK: 23
+- `compileSdk` 37: the library's AAR metadata require it
+- Kotlin 2.3 (the library is compiled with Kotlin 2.3.20; Kotlin 2.1 cannot read its metadata)
+- Java 17
 - Usage of Android X
 
 
@@ -71,7 +74,7 @@ Then add the dependency for BlueGPS-SDK in the `build.gradle` file for your `app
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-demoapp:<version>'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-public:<version>'
 }
 ```
 
@@ -96,6 +99,31 @@ class App : Application() {
 }
 ```
 
+Every other call of the SDK fails if it is made before `initSDK`.
+
+#### Network logs
+
+`initSDK` also takes `networkLogLevel`, which decides how much of each HTTP call reaches Logcat:
+
+```kotlin
+BlueGPSLib.instance.initSDK(
+    sdkEnvironment = Environment.sdkEnvironment,
+    context = applicationContext,
+    networkLogLevel = if (BuildConfig.DEBUG) NetworkLogLevel.BASIC else NetworkLogLevel.NONE,
+)
+```
+
+| `NetworkLogLevel` | What reaches the log |
+|---|---|
+| `NONE` (default) | nothing |
+| `BASIC` | one line per request and one per response: method, URL, status code, timing |
+| `BODY` | the above, plus headers and request/response bodies |
+
+At every level the `Authorization` header and the query parameters that identify a person are
+redacted. Bodies cannot be redacted: use `BODY` only in your own debug builds, since a body can
+carry personal data or a token. The older `enabledNetworkLogs: Boolean` still works (`true` means
+`BODY`, `false` means `NONE`); prefer `networkLogLevel`.
+
 
 
 The BlueGSP-SDK use an `Environment` where integrator have to put SDK data for register the SDK and for create a communication with the BlueGPS Server. The management of the environment is demanded to the app.
@@ -103,15 +131,23 @@ The BlueGSP-SDK use an `Environment` where integrator have to put SDK data for r
 ```kotlin
 object Environment {
 
-    private val SDK_ENDPOINT = "{{provided-bluegps-endpoint}}"
-    private val APP_ID = "com.synapseslab.demosdk"
+    private const val SDK_ENDPOINT = "{{provided-bluegps-endpoint}}"
+
+    val keyCloakParameters = KeyCloakParameters(/* see App Authentication below */)
 
     val sdkEnvironment = SdkEnvironment(
         sdkEndpoint = SDK_ENDPOINT,
-        appId = APP_ID,
+        keyCloakParameters = keyCloakParameters,
     )
 }
 ```
+
+| Field | Required | Description |
+|---|---|---|
+| `sdkEndpoint` | yes | Base URL of the BlueGPS server |
+| `keyCloakParameters` | yes | The Keycloak configuration, see below |
+| `sdkToken` | no | A token to use instead of the Keycloak login |
+| `timeout` | no | HTTP timeout in seconds, default `60` |
 
 
 
@@ -119,17 +155,7 @@ object Environment {
 
 The BlueGPS_SDK offers a client for managing authentication and authorization within your application. It leverages Keycloak to handle user authentication.
 
-For the configuration in this case use `keyCloakParameters` parameter on `initSDK(..)`.
-
-```kotlin
-BlueGPSLib.instance.initSDK(
-    sdkEnvironment = Environment.sdkEnvironment,
-    context = applicationContext,
-    keyCloakParameters = Environment.keyCloakParameters
-)
-```
-
-where `keyCloakParameters` is this object
+The Keycloak configuration travels in the `keyCloakParameters` field of `SdkEnvironment`:
 
 ```kotlin
 val keyCloakParameters = KeyCloakParameters(
@@ -163,7 +189,37 @@ This means that we don't have a user that has to login but we use client credent
 
 
 
-Finally in your ```AndroidManifest.xml``` add this and change host and scheme with your configuration.
+#### Login redirect
+
+After the user login, Keycloak sends the browser back to the app through the `redirect_uri`. The SDK
+supports two ways to receive it.
+
+**HTTPS App Link (recommended).** Since 6.1.7 the SDK declares an HTTPS App Link
+(`android:autoVerify="true"`) on `AuthenticationActivity`. Android delivers an App Link only to
+the app whose identity the server confirms, so another app cannot register the same address and
+intercept the authorization code (*OAuth authorization code hijacking*), which a custom URI scheme
+cannot prevent.
+
+1. Set host and path in `app/build.gradle(.kts)`:
+
+    ```kotlin
+    android {
+        defaultConfig {
+            manifestPlaceholders["authRedirectHost"] = "{{your-bluegps-host}}"
+            manifestPlaceholders["authRedirectPath"] = "/mobileapp/callback"
+        }
+    }
+    ```
+
+2. Set `redirect_uri` in `KeyCloakParameters` to `https://<authRedirectHost><authRedirectPath>`, and
+   register it in Keycloak as a valid redirect URI.
+3. Make sure `https://<authRedirectHost>/.well-known/assetlinks.json` lists your package name and
+   the SHA-256 fingerprint of each signing certificate you use (debug and release).
+4. Do not declare your own intent filter on `AuthenticationActivity`: the SDK declares it. When
+   several apps share the same host, give each a different `authRedirectPath`.
+
+**Custom URI scheme (previous mode, still supported).** An existing integration can keep its
+`redirect_uri` with a custom scheme, for example `myapp://my.host`, and its own intent filter:
 
 ```xml
 <activity
@@ -180,6 +236,30 @@ Finally in your ```AndroidManifest.xml``` add this and change host and scheme wi
     </intent-filter>
 </activity>
 ```
+
+The two `manifestPlaceholders` above are still required, or the manifest merge fails: set them to
+your BlueGPS host, even if the custom scheme is the one actually used. Prefer migrating to the App
+Link: the custom scheme stays exposed to the hijacking described above.
+
+#### Session helpers
+
+```kotlin
+// Emits true while the session is valid
+BlueGPSLib.instance.isAValidSession().collect { isValid: Boolean -> }
+
+// One-shot check
+val isValid: Boolean? = BlueGPSLib.instance.isAValidSession(context)
+
+// Whether the refresh token can still be used
+val canRefresh: Boolean = BlueGPSLib.instance.isRefreshTokenValid(context)
+
+// The current access token, and the e-mail read from it (no network call)
+val token: String? = BlueGPSLib.instance.accessToken()
+val email: String? = BlueGPSLib.instance.currentUserEmail()
+```
+
+`BlueGPSAuthManager.instance` also offers `guestLogin()`, `silentLogin(username, password)`,
+`qrCodeAuth(code)` and `logout(handleCallback)`.
 
 
 
@@ -1976,4 +2056,418 @@ Declare the `BootCompletedReceiver` in your `AndroidManifest.xml` to restart the
         <action android:name="android.intent.action.BOOT_COMPLETED" />
     </intent-filter>
 </receiver>
+```
+### 12.6 Monitor your own beacon regions
+
+`startTrackingUserPosition` can scan the iBeacon regions passed by the app instead of the ones
+configured on the server. In that case the service makes no server call and `initSDK` is not
+required.
+
+```kotlin
+BlueGPSLib.instance.startTrackingUserPosition(
+    context = applicationContext,
+    manualRegions = listOf(
+        ManualBeaconRegion(uuid = "11111111-2222-3333-4444-555555555555", name = "Entrance"),
+        ManualBeaconRegion(uuid = "11111111-2222-3333-4444-555555555555", major = 1, minor = 2),
+    ),
+    onError = { message -> },
+)
+```
+
+`uuid` is required, `major` and `minor` narrow the region, `name` labels the beacons found in it.
+An empty list or an invalid UUID calls `onError` and starts nothing. The regions are kept on disk,
+so a service restarted by Android scans the same ones.
+
+Read what is in range from `rangedBeaconsFlow`, and whether the scan is running from
+`beaconScanRunningFlow`:
+
+```kotlin
+BlueGPSLib.instance.rangedBeaconsFlow.collect { beacons: List<RangedBeacon> ->
+    // uuid, major, minor, name, rssi, distance, lastSeen
+}
+
+BlueGPSLib.instance.beaconScanRunningFlow.collect { running: Boolean -> }
+```
+
+
+
+## 13 Position API
+
+```kotlin
+// Send GPS readings to the server
+suspend fun saveGPSPositions(bgpGpsPositions: List<BGPGpsPosition>): Resource<SyHttpResponse>
+
+// Current position of a tag
+suspend fun getCurrentPosition(tagId: String): Resource<Position>
+
+// Last GPS position recorded by the SDK, or null if older than notOlderThan (ms)
+fun getLastGPSPosition(notOlderThan: Long = 10000): BGPGpsPosition?
+
+// Inject a GPS position, or only the compass, into BlueGPSMapView
+suspend fun sendGPSPosition(bgpGpsPosition: BGPGpsPosition? = null)
+suspend fun sendCompass(compass: Double? = null)
+```
+
+`BGPGpsPosition.floorLevel` defaults to `0`: if it does not match a floor of the BlueGPS
+coordinate system, the server answers 400.
+
+
+
+## 14 Buildings, maps and filters
+
+```kotlin
+suspend fun getBuildingList(): Resource<List<Building>>
+suspend fun getMapsBackgroundList(): Resource<List<String>>
+suspend fun getFloorList(): Resource<List<FilterValueElement>>
+
+// Filter configuration, to build filter UIs before a search or a booking
+suspend fun getFilter(type: FilterType, ticketMode: Boolean? = null): Resource<Filter>
+suspend fun getFilterResource(type: ResourceType): Resource<Filter>
+suspend fun getFilterSection(
+    sectionTypes: List<SectionFilterType>? = null,
+    ticketMode: Boolean? = null,
+): Resource<List<SectionFilter>>
+
+// Resources near a booking
+suspend fun searchByBooking(scheduleElement: ScheduleElement): Resource<List<BGPResource>>
+
+// A resource by id, and the element bound to a QR or NFC code
+suspend fun getElementResource(id: String): Resource<com.synapseslab.bluegps_sdk.data.model.booking.Resource>
+suspend fun getCodeElement(code: String): Resource<CodeElement>
+
+// Add or remove a favourite resource
+suspend fun putFavourite(favouriteResource: FavouriteResource): Resource<SyHttpResponse>
+```
+
+`getSearchableTrackTag()` completes the Search object API (§8):
+
+```kotlin
+suspend fun getSearchableTrackTag(
+    search: String? = null,
+    tagId: String? = null,
+    label: String? = null,
+    nfcCode: String? = null,
+): Resource<List<TrackTag>>
+```
+
+
+
+## 15 Navigation API
+
+```kotlin
+// Route between two points
+suspend fun getBGPWayfinding(bgpNavigationRequest: BGPNavigationRequest): Resource<BGPNavigationResponse>
+
+// Navigable resources and navigation path options
+suspend fun getNavigationResource(): Resource<List<NavigationResource>>
+suspend fun getNavigationPath(): Resource<List<FilterValueElement>>
+
+// Tell the server the user started, or left, the navigation to a resource
+suspend fun navigationResourceLink(navigationResource: NavigationResource): Resource<NavigationResource>
+suspend fun navigationResourceUnlink(): Resource<List<NavigationResource>>
+```
+
+
+
+## 16 More booking API
+
+These complete the Booking API of §11.
+
+```kotlin
+// Upcoming bookings of the logged user, from now on
+suspend fun getAgendaNextMy(): Resource<List<ScheduleElement>>
+
+// A booking by id
+suspend fun getScheduleById(bookingId: String): Resource<ScheduleElement>
+
+// Check a booking after changing date or time slot, before saving it
+suspend fun scheduleCheck(scheduleRequest: ScheduleRequest): Resource<SyHttpResponseAlert>
+
+// Delete a booking: DeletionType.SINGLE, FROM_THIS or ALL_SERIES
+suspend fun deleteSchedule(id: String, deletionType: DeletionType? = null): Resource<SyHttpResponse>
+
+// Free time slots
+suspend fun getAvailableSlots(
+    resourceId: String? = null,
+    bookingId: String? = null,
+    resourceType: ResourceType? = null,
+    date: String? = null,
+    start: String? = null,
+    end: String? = null,
+    isBookingNearColleague: Boolean? = null,
+): Resource<USlot>
+suspend fun getAvailableSlots(slotApi: String): Resource<USlot>
+
+// Swap a booking, after a swap check
+suspend fun swapBooking(swapCheckResult: SwapCheckResult): Resource<ScheduleRequest>
+
+// Bookings of a colleague, to book near them
+suspend fun getNearbyBookings(userBooking: UserBooking): Resource<List<ScheduleElement>>
+
+// Users to invite and shared calendars
+suspend fun getBookingUserList(search: String? = null): Resource<List<UserToInvite>>
+suspend fun getSharedCalendars(): Resource<List<UserCalendar>>
+
+// Values for a monthly recurrence
+suspend fun getRecurrenceMonth(day: String, language: String): Resource<List<CommonData>>
+```
+
+A booking that waits for an approval, a booking of several rooms (`multiResources`) and its
+`action` are all fields of `ScheduleElement`.
+
+
+
+## 17 Locker API
+
+```kotlin
+suspend fun getLockerFilter(size: String): Resource<Filter>
+suspend fun getNearestLocker(lockerBooking: LockerBooking): Resource<ScheduleElement>
+suspend fun setLockerBooking(lockerBooking: LockerBooking): Resource<ScheduleElement>
+suspend fun unlockLocker(bookingId: String): Resource<LockerUnlock>
+suspend fun releaseLocker(bookingId: String): Resource<SyHttpResponseAlert>
+```
+
+
+
+## 18 Home and widgets
+
+```kotlin
+suspend fun getHomeMy(buildingId: String? = null): Resource<List<Container>>
+suspend fun getWidgetHome(tagId: String? = null): Resource<List<AbstractComponent>>
+suspend fun getWidgetCard(componentId: String): Resource<AbstractComponent>
+suspend fun saveWidgetCard(body: AbstractComponent): Resource<AbstractComponent>
+suspend fun getWidgetRoom(roomId: String, isHorizontal: Boolean? = false): Resource<AbstractComponent>
+```
+
+Live updates of the widgets arrive as server sent events. Each `start*` call replaces the previous
+one of the same kind; `checkTimeout` is at most 30000 ms.
+
+```kotlin
+BlueGPSLib.instance.startHomeWidgetEvent(tagId = tagId, callbackHandler = { event -> }, onStop = { reason -> })
+BlueGPSLib.instance.stopHomeWidgetEvent()
+
+BlueGPSLib.instance.startWidgetIdEvent(widgetId = widgetId, callbackHandler = { event -> })
+BlueGPSLib.instance.stopWidgetIdEvent()
+
+BlueGPSLib.instance.startWidgetRoomIdEvent(roomId = roomId, callbackHandler = { event -> })
+BlueGPSLib.instance.stopWidgetRoomIdEvent()
+```
+
+`AbstractComponent` and `Widget` are polymorphic: deserialize them with
+`BlueGPSLib.instance.customGsonBuilder()`, not with a plain `Gson()`.
+
+
+
+## 19 Generic events
+
+```kotlin
+BlueGPSLib.instance.startNotifyEventChanges(
+    streamType = StreamType.GENERIC,
+    outputEvents = listOf("myEvent"),
+    tagIdList = null,                      // null: all tags
+    callbackHandler = { event: Event -> }, // event.name, event.data
+    onStop = { reason -> },
+)
+
+BlueGPSLib.instance.stopNotifyEventChanges()
+```
+
+
+
+## 20 Notifications
+
+```kotlin
+// Register the device and its push token, and remove it
+suspend fun registerDevice(body: BGPRegistrationInfo): Resource<BGPRegistrationInfo>
+suspend fun unregisterDevice(body: UnregisterDeviceRequest): Resource<List<BGPRegistrationInfo>>
+
+suspend fun notificationList(pushToken: String, type: NotificationType): Resource<List<BGPNotification>>
+suspend fun countNotification(countNotificationRequest: CountNotificationRequest): Resource<BGPNotificationCount>
+suspend fun readNotifications(
+    updateNotificationRequest: UpdateNotificationRequest,
+    type: NotificationType,
+): Resource<UpdateNotificationResponse>
+suspend fun deleteNotifications(
+    updateNotificationRequest: UpdateNotificationRequest,
+    type: NotificationType,
+): Resource<UpdateNotificationResponse>
+
+// Language of the device, used for localized notifications (e.g. "it_IT")
+suspend fun setLanguage(language: String): Resource<SyHttpResponse>
+```
+
+`unregisterDevice` without a `uuid` removes every registration bound to the push token.
+
+
+
+## 21 Easy Planner
+
+A booking wizard driven by the server through `AbstractComponent.Form`.
+
+```kotlin
+suspend fun refreshEasyPlanner(): Resource<AbstractComponent.Form>
+suspend fun refreshEasyPlanner(form: AbstractComponent.Form): Resource<AbstractComponent.Form>
+suspend fun submitEasyPlanner(form: AbstractComponent.Form): Resource<AbstractComponent.Form>
+
+suspend fun refreshEasyPlannerSolutions(): Resource<AbstractComponent.Form>
+suspend fun refreshEasyPlannerSolutions(form: AbstractComponent.Form): Resource<AbstractComponent.Form>
+suspend fun submitEasyPlannerSolutions(form: AbstractComponent.Form): Resource<List<AbstractComponent.Section>>
+```
+
+
+
+## 22 Do not disturb and out of office
+
+```kotlin
+suspend fun getDndOooDayTime(): Resource<List<FilterElement>>
+suspend fun setDndOoo(dndOutOfOffice: DndOutOfOffice): Resource<SyHttpResponse>
+```
+
+
+
+## 23 Tickets
+
+```kotlin
+suspend fun getTicketCategoryList(): Resource<List<TicketCategory>>
+suspend fun getTicketStatusList(): Resource<List<InternationalizedString>>
+suspend fun getTicketMy(search: String? = null, filter: Filter? = null): Resource<List<Ticket>>
+
+// New ticket: get the form, fill it, submit it
+suspend fun initNewTicket(resource: com.synapseslab.bluegps_sdk.data.model.booking.Resource? = null): Resource<AbstractComponent.Form>
+suspend fun submitNewTicket(form: AbstractComponent.Form, tagId: String? = null): Resource<Ticket>
+
+suspend fun getTicketById(id: String): Resource<Ticket>
+suspend fun deleteTicket(id: String): Resource<Ticket>
+
+suspend fun getTicketCommentList(ticketId: String, isDesc: Boolean? = true): Resource<List<TicketComment>>
+suspend fun saveTicketComment(ticketId: String, comment: TicketComment): Resource<TicketComment>
+
+suspend fun saveMediaFile(body: RequestBody): Resource<TicketFile>
+suspend fun deleteMediaFile(fileId: String): Resource<TicketFile>
+```
+
+
+
+## 24 Visitors
+
+```kotlin
+suspend fun getVisitorTemplate(platform: String): Resource<AbstractComponent>
+suspend fun saveVisitor(visitor: AbstractComponent): Resource<BGPAstrumVisitor>
+suspend fun searchVisitor(visitorRequest: BGPAstrumVisitorRequest): Resource<List<BGPAstrumVisitor>>
+
+suspend fun getVisitTemplate(platform: String): Resource<AbstractComponent>
+suspend fun saveVisit(form: AbstractComponent): Resource<BGPAstrumVisit>
+```
+
+
+
+## 25 Assignments and stamps
+
+```kotlin
+// Assignments: get the filter form, then the list matching it
+suspend fun getAssignmentFilter(): Resource<AbstractComponent.Form>
+suspend fun assignmentList(body: AbstractComponent.Form? = null): Resource<List<AbstractComponent.ResourceCard>>
+
+// Stamps of the logged user: get the filter form, then the list matching it
+suspend fun getStampForm(): Resource<AbstractComponent.Form>
+suspend fun getStampMy(body: AbstractComponent.Form? = null): Resource<List<AbstractComponent.StampCard>>
+```
+
+
+
+## 26 EV-Charge
+
+### 26.1 Charging bookings
+
+```kotlin
+// Charging bookings of the user active now, one card each
+suspend fun getActiveEvChargeBookings(): Resource<List<EvChargeBooking>>
+
+// Start or stop the charge, or send the command of the card button
+suspend fun startEvCharge(bookingId: String): Resource<Unit>
+suspend fun stopEvCharge(bookingId: String): Resource<Unit>
+suspend fun sendEvChargeCommand(bookingId: String, action: ChargerButtonAction): Resource<Unit>
+
+// Live state of a booking: the current state right away, then every change
+fun evChargeEvents(booking: EvChargeBooking): Flow<EvChargeEvent>
+```
+
+Call `startEvCharge` / `stopEvCharge` only when the card button has that action and is enabled,
+and do not update the card yourself: the new state arrives on `evChargeEvents`. The channel lives
+as long as the collection, so collect it in the scope of the screen.
+
+### 26.2 Instant charging
+
+A spot to charge now, instead of a booking.
+
+```kotlin
+suspend fun getInstantStatus(): Resource<InstantStatus>
+suspend fun getInstantCandidates(): Resource<InstantCandidates>
+
+// Without resourceId: the first free spot, or a place in the queue. With it: exactly that spot
+suspend fun requestInstantSpot(resourceId: String? = null): Resource<InstantRequestResult>
+suspend fun leaveInstantQueue(): Resource<Unit>
+
+// "I cannot use this spot": get another one now
+suspend fun replaceInstantSpot(
+    reason: InstantReplaceReason,
+    note: String? = null,
+    resourceId: String? = null,
+): Resource<InstantRequestResult>
+
+// "I cannot go right now": give the spot back and move to the end of the queue
+suspend fun declineInstantSpot(): Resource<InstantRequestResult>
+
+// Live state for the instant charging screen
+fun instantChargeEvents(): Flow<InstantChargeEvent>
+```
+
+A screen that must stay up to date collects `instantChargeEvents()` instead of calling
+`getInstantStatus()` in a loop: the stream starts from that same read.
+
+
+
+## 27 User profile, settings and languages
+
+```kotlin
+suspend fun getUserProfile(): Resource<ProfileAction>
+
+suspend fun getAllUserSettings(): Resource<UserProperties>
+suspend fun getUserProperty(property: UserPropertyType): Resource<UserProperty>
+suspend fun setUserProperty(userProperty: UserProperty): Resource<UserProperty>
+
+suspend fun getLanguages(
+    applications: List<String>? = null,
+    languages: List<String>? = null,
+): Resource<List<Language>>
+suspend fun getLanguage(name: String): Resource<Language>
+```
+
+
+
+## 28 Utilities
+
+```kotlin
+// Is the server online
+suspend fun checkStatusServer(): Resource<ErrorResponse>
+
+// Download an image
+suspend fun downloadImage(imageUrl: String): Resource<ByteArray>
+
+// Device configuration and tag of the user
+suspend fun getOrCreateConfiguration(tagId: String? = null): Resource<AndroidAdvConfiguration>
+fun userTagId(): String?
+fun getUUID(): String?
+
+// Gson that reads the polymorphic Widget and AbstractComponent
+fun customGsonBuilder(): Gson
+
+// Change endpoint or token at runtime, without a new initSDK
+fun updateSDKEnvironment(sdkEnvironment: SdkEnvironment)
+
+// Cancel every HTTP call in flight, for example on logout
+fun cancelAllNetworkRequest()
+
+// Restart the beacon scan configuration, when the service started before initSDK
+fun reconfigureBeaconService(context: Context)
 ```

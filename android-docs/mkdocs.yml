@@ -2,7 +2,12 @@ site_name: BlueGPS Android SDK
 site_description: "BlueGPS Android SDK - Documentation"
 site_author: Synapses srls.
 site_dir: html
+site_url: https://synapseslab.com/android-bluegps-sdk-public/
 repo_url: https://github.com/synapseslab/android-bluegps-sdk-public
+repo_name: synapseslab/android-bluegps-sdk-public
+copyright: Copyright &copy; Synapses srl
+# Keep the .html URLs already linked from README.md (the offline plugin used to force them)
+use_directory_urls: false
 
 nav:
   - 'Getting Started': index.md
@@ -15,6 +20,7 @@ theme:
   logo: images/synapses-bluegps.png   # path relative to the docs/ folder
   favicon: images/favicon.ico  # optional
   features:
+    - navigation.instant
     - navigation.sections
     - navigation.top
     - search.suggest
@@ -29,8 +35,8 @@ theme:
     # Palette toggle for light mode
     - scheme: default
       media: "(prefers-color-scheme: light)"
-      primary: "#2565E5"
-      accent: 'dark-blue'
+      primary: custom
+      accent: blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -38,8 +44,8 @@ theme:
     # Palette toggle for dark mode
     - scheme: slate
       media: "(prefers-color-scheme: dark)"
-      primary: "#2565E5"
-      accent: 'light-blue'
+      primary: custom
+      accent: light-blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -47,8 +53,6 @@ theme:
 plugins:
   - search:
       lang: en
-  - offline:
-      enabled: true
 
 markdown_extensions:
   - pymdownx.inlinehilite
@@ -58,11 +62,8 @@ markdown_extensions:
       pygments_lang_class: true
       auto_title: true
   - pymdownx.superfences
-  - codehilite:
-      guess_lang: false
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.critic
   - pymdownx.critic
   - admonition
   - pymdownx.details
@@ -71,8 +72,8 @@ markdown_extensions:
   - md_in_html
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - css/custom.css

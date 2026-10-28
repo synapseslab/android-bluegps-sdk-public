@@ -1,3 +1,11 @@
+/* Brand colour for `primary: custom` in mkdocs.yml, in both light and dark scheme */
+:root,
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #2565E5;
+    --md-primary-fg-color--light: #5B8BEC;
+    --md-primary-fg-color--dark: #1A4FB8;
+}
+
 /* Header bar background */
 .md-header {
     background-color: #2565E5 !important;
