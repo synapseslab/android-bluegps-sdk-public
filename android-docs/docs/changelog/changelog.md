@@ -1,6 +1,44 @@
 # Changelog: `android-bluegps-sdk`
 
-## android-bluegps-sdk                                                                                                            
+## android-bluegps-sdk
+### Version 6.3.2
+**28/10/2026**
+
+Highlights since 6.0.7:
+
+#### ✅ New Features
+- **Beacon scanning** — scanning on regions passed by the app, and the list of beacons in range.
+- **Bookings** — multi-room bookings (`multiResources`, `action` on `ScheduleElement`), bookings
+  awaiting approval, occupancy cards with cover image and `RESOURCE_OCCUPANCY`.
+- **EV-Charge** — charging stations and instant charging.
+- **Notifications** — `unregisterDevice` to stop receiving notifications.
+
+#### 🔒 Security
+- The access token and the token exchange bodies are no longer written to Logcat; the network
+  log has a level and never writes credentials.
+- Refresh token handling serialised: the session no longer dies when the token expires, and a
+  refresh that merely failed no longer logs the user out.
+
+#### 🐞 Bug Fixes
+- A 401 that the refresh could not fix now reaches the caller as a 401.
+- An error keeps its HTTP code even without a body.
+- Beacon scan no longer stops receiving after 5 minutes.
+- Tracking started before `initSDK` no longer reads a missing session store.
+- Positions are no longer credited to a session that has ended.
+
+#### ⚠️ Migration from 6.0.x
+- The consuming app needs `compileSdk` 37: the AAR metadata require it.
+- The SDK manifest declares an HTTPS App Link on `AuthenticationActivity`, so the app must set
+  the `authRedirectHost` and `authRedirectPath` manifest placeholders, or the manifest merge
+  fails. An app that keeps a custom-scheme `redirect_uri` sets them only to satisfy the merge
+  and keeps its own intent filter.
+
+#### ⚠️ Dependencies
+- Kotlin runtime 2.3.20 (was 2.1.0): a consumer on Kotlin 2.1 fails to read the metadata; verified
+  with Kotlin 2.3.20.
+- `play-services-location` 21.4.0 (was 21.2.0).
+
+
 ### Version 6.0.7                                                                                                                 
 **18/02/2026**                                                                                                                    
                                                                                                                                   
