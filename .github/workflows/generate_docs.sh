@@ -13,5 +13,7 @@ set -ex
 cd ./android-docs
 python3 -m venv venv
 source venv/bin/activate
-pip3 install mkdocs-material
+# Pinned: an unpinned install silently changes the theme and its config rules between builds.
+# Material for MkDocs reaches end of life on 2027-05-05; Zensical is its successor.
+pip3 install mkdocs-material==9.8.0
 mkdocs build
