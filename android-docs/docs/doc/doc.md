@@ -32,8 +32,9 @@ The library use:
 Minimum requirements are:
 
 - Minimum SDK: 23
-- `compileSdk` 37: the library's AAR metadata require it
-- Kotlin 2.3 (the library is compiled with Kotlin 2.3.20; Kotlin 2.1 cannot read its metadata)
+- `compileSdk` 36: the library's AAR metadata require it (6.3.0–6.3.2 required 37)
+- Kotlin 2.1 (the library is compiled at Kotlin language level 2.1 and depends on the 2.1.20
+  runtime; 6.3.0–6.3.2 required Kotlin 2.3)
 - Java 17
 - Usage of Android X
 

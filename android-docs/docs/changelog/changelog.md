@@ -1,6 +1,21 @@
 # Changelog: `android-bluegps-sdk`
 
 ## android-bluegps-sdk
+### Version 6.3.3
+**06/11/2026**
+
+#### 🔧 Compatibility
+- Consumable from Kotlin 2.1 and `compileSdk` 36. 6.3.0–6.3.2 carried Kotlin 2.3 metadata and
+  required `compileSdk` 37, so an app on Kotlin 2.1 (for example React Native 0.86) could not
+  build. The library is now compiled at Kotlin language level 2.1, and depends on `kotlin-stdlib`
+  and `kotlin-parcelize-runtime` 2.1.20. Apps on newer Kotlin use the same artifact.
+- No API or behaviour change from 6.3.2.
+
+#### ⚠️ Upgrading from 6.0.x
+- Use 6.3.3, not 6.0.7: 6.1–6.3 carry the authentication fixes and the bug fixes listed under
+  6.3.2. The migration notes of 6.3.2 still apply, except that `compileSdk` 36 and Kotlin 2.1 are
+  now enough.
+
 ### Version 6.3.2
 **28/10/2026**
 
