@@ -334,6 +334,13 @@ For obtain a device configuration for advertising call this function:
 suspend fun getDeviceConfiguration(): Resource<AndroidAdvConfiguration>
 ```
 
+Advertising continues in background through a foreground service with a notification. On Android
+13+ that needs `POST_NOTIFICATIONS`: without it the service is not promoted to the foreground,
+advertising runs while the app is in the foreground and stops when Android stops the service in
+background. Called from background without it, `startAdv` does not start and broadcasts
+`ServiceStatus.ERROR`. Once the permission is granted, the next `startAdv` brings the notification
+up.
+
 For stop you service advertising call:
 
 ```kotlin
@@ -1814,9 +1821,18 @@ If you target Android 12 or higher (SDK 31+) you must also request:
 - `BLUETOOTH_SCAN` 
 - `BLUETOOTH_CONNECT` 
 
-For show notifications, you must also add:
+For scanning to continue in background, on Android 13+ you must also request:
 
 - `POST_NOTIFICATIONS`
+
+Without it scanning still starts, but as a plain service with no notification: it runs while the app
+is in the foreground and stops when Android stops the service in background, so no beacon event
+reaches the `PendingIntent` once the app is closed. If Android refuses to start the service because
+the app is in background, `startTrackingUserPosition` calls `onError` instead.
+`PermissionHelper.hasTrackingPermissions()` does not include `POST_NOTIFICATIONS`: check
+`PermissionHelper.hasNotificationPermission()` to know whether scanning will continue in
+background. Once the permission is granted, call `startTrackingUserPosition` again: the service is
+promoted to the foreground without restarting.
 
 If you want to detect beacons in the background, you must also add:
 

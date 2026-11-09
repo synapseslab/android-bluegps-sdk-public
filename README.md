@@ -9,7 +9,7 @@
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
-| November 6, 2026   | 6.3.3        | -               | -               |
+| November 9, 2026   | 6.3.4        | -               | -               |
 
 ## Integration guide
 ### Requirements
@@ -58,7 +58,7 @@ The `version` corresponds to release version, for example:
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-public:6.3.3'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-public:6.3.4'
 }
 ```
 
