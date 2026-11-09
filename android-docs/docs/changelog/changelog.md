@@ -1,6 +1,25 @@
 # Changelog: `android-bluegps-sdk`
 
 ## android-bluegps-sdk
+### Version 6.3.4
+**09/11/2026**
+
+#### 🐛 Without `POST_NOTIFICATIONS`, advertising and beacon scanning run in the foreground only
+- On Android 13+ with notifications denied, `BlueGPSAdvertisingService` and the beacon scanning
+  service used to refuse to work at all, even with the app open. They now run without a
+  notification: they work while the app is in the foreground and stop when Android stops them in
+  background. With the permission granted nothing changes.
+- Granting the permission later takes effect on the next `startAdv` / `startTrackingUserPosition`,
+  without restarting the service.
+- If Android refuses the start because the app is in background, `startAdv` broadcasts
+  `ServiceStatus.ERROR` and `startTrackingUserPosition` calls `onError`, instead of crashing.
+- The beacon scanning notification uses the SDK notification icon instead of the app launcher icon.
+
+#### ⚠️ Behaviour change
+- `PermissionHelper.hasTrackingPermissions()` no longer includes `POST_NOTIFICATIONS`. Use
+  `PermissionHelper.hasNotificationPermission()` to know whether scanning will continue in
+  background.
+
 ### Version 6.3.3
 **06/11/2026**
 
