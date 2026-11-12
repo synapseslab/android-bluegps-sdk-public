@@ -352,6 +352,12 @@ background. Called from background without it, `startAdv` does not start and bro
 `ServiceStatus.ERROR`. Once the permission is granted, the next `startAdv` brings the notification
 up.
 
+The notification exists only while advertising runs (from 6.3.7). Binding the service does not show
+it: it appears when advertising starts (`STARTED`), and goes away with `stopAdv()`, with the Stop
+action of the notification, and with an `ERROR` that leaves advertising off. A service your app is
+still bound to stays alive without a notification. Call `stopAdv()` on logout: the SDK logout stops
+position tracking, not advertising.
+
 For stop you service advertising call:
 
 ```kotlin

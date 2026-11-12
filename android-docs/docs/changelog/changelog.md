@@ -1,6 +1,24 @@
 # Changelog: `android-bluegps-sdk`
 
 ## android-bluegps-sdk
+### Version 6.3.7
+**12/11/2026**
+
+#### 🐛 Advertising service: the notification exists only while advertising runs
+- The foreground notification appeared as soon as the app bound `BlueGPSAdvertisingService`,
+  before any `startAdv` (for example on the login screen), and stayed after `stopAdv()` (for
+  example after logout) and after a failed start. An app cannot remove the notification of an SDK
+  foreground service.
+- The notification now appears when advertising starts (`STARTED`) and goes away with `stopAdv()`,
+  with the Stop action of the notification, and with an `ERROR` that leaves advertising off. A
+  `startAdv` while advertising is running keeps it.
+- A service the app is still bound to stays alive, without notification.
+
+#### ⚠️ Behaviour change
+- After `stopAdv()` the service is no longer a started service: a later `startAdv` called while the
+  app is in background broadcasts `ServiceStatus.ERROR`. Call `startAdv` with the app in the
+  foreground, as for the first start.
+
 ### Version 6.3.6
 **12/11/2026**
 
