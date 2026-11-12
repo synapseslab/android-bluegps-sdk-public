@@ -36,6 +36,9 @@ Minimum requirements are:
 - Kotlin 2.1 (the library is compiled at Kotlin language level 2.1 and depends on the 2.1.20
   runtime; 6.3.0–6.3.2 required Kotlin 2.3)
 - Java 17
+- OkHttp 5.1 (`okhttp` and `logging-interceptor`): the SDK calls
+  `HttpLoggingInterceptor.redactQueryParams()`, which exists only from OkHttp 5. An app that forces
+  4.x crashes at `initSDK` with `NoSuchMethodError`
 - Usage of Android X
 
 
@@ -188,6 +191,14 @@ This means that we don't have a user that has to login but we use client credent
 
 > **This paramaters are provided by Synapses after the purchase of the BlueGPS license.**
 
+**An incomplete configuration is returned, not thrown** (from 6.3.5). `guestLogin()`,
+`silentLogin()` and `refreshToken()` never throw: a missing setting comes back as
+`Resource.Error` with code `400` and the setting in the message (`"Set guest client secret"`,
+`"Set guest client id"`, `"Set client id"`, `"Set token endpoint"`), a call made before `initSDK`
+as `Resource.Exception` with an `IllegalStateException`. Up to 6.3.4 they threw
+`IllegalArgumentException` / `NullPointerException`, which crashed an app calling them from a
+coroutine without `try/catch`. The `KeyCloakParameters` constructor still validates its own
+arguments with `require`: that happens once, where you build the configuration.
 
 
 #### Login redirect
@@ -361,6 +372,18 @@ subclass ``BroadcastReceiver`` and implement the ``onReceive(...)`` method.
 
 The status of the service are: ``STARTED``, ``STOPPED``, ``ERROR``.
 
+- `STARTED`: the system confirmed the advertising, with the configuration in use.
+- `STOPPED`: once per `stopAdv()` (or Stop from the notification), and only if advertising was
+  running. A `startAdv` while advertising is running restarts it without a `STOPPED`: only the
+  outcome of the new start arrives.
+- `ERROR`: a start or a stop failed, with the reason in `message`. After a failed start
+  advertising is not running. Every failed start sends it: Bluetooth off, `BLUETOOTH_ADVERTISE`
+  not granted, configuration request failed, tag id not valid, advertising refused by the system.
+
+The status is sent with `Context.sendBroadcast()` to your app's package only (from 6.3.6): register
+the receiver with `ContextCompat.registerReceiver` and `RECEIVER_NOT_EXPORTED`.
+`LocalBroadcastManager` does not receive it.
+
 ```kotlin
 private val advertisingServiceReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -375,7 +398,24 @@ private val advertisingServiceReceiver = object : BroadcastReceiver() {
 ```
 
 then register the receiver in ``onResume()`` method and unregister the receiver in ``onPause()``
-method.
+method:
+
+```kotlin
+override fun onResume() {
+    super.onResume()
+    ContextCompat.registerReceiver(
+        this,
+        advertisingServiceReceiver,
+        IntentFilter(BlueGPSAdvertisingService.ACTION_ADV),
+        ContextCompat.RECEIVER_NOT_EXPORTED,
+    )
+}
+
+override fun onPause() {
+    super.onPause()
+    unregisterReceiver(advertisingServiceReceiver)
+}
+```
 
 Show the demo example for more details.
 

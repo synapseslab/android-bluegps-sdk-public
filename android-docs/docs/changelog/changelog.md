@@ -1,6 +1,46 @@
 # Changelog: `android-bluegps-sdk`
 
 ## android-bluegps-sdk
+### Version 6.3.6
+**12/11/2026**
+
+#### 🐛 Advertising service: no silent failures, one `STOPPED` per stop, status sent to the app only
+- Every failed `startAdv` now broadcasts `ServiceStatus.ERROR`: `BLUETOOTH_ADVERTISE` not granted,
+  Bluetooth turned off while the configuration was being fetched, configuration request failed with
+  an exception (no network, for example), BLE advertising not available, advertising payload not
+  built. Before, these only wrote a log, and some left the service flagged as running.
+- `stopAdv` without `BLUETOOTH_ADVERTISE` broadcasts `ERROR` instead of nothing.
+- After a start the system refuses, the service is no longer flagged as running.
+- The service no longer shows a Toast.
+
+#### ⚠️ Behaviour change
+- `STOPPED` arrives once per stop, and only if advertising was running. A `startAdv` while
+  advertising is running restarts it without `STOPPED`: only `STARTED` or `ERROR` arrives.
+- The status broadcast is sent to the app's own package only: other apps no longer receive the
+  status, tag id and configuration. Register the receiver with
+  `ContextCompat.registerReceiver(..., RECEIVER_NOT_EXPORTED)`; `LocalBroadcastManager` never
+  received it.
+
+### Version 6.3.5
+**12/11/2026**
+
+#### 🐛 The logins return an incomplete configuration instead of throwing it
+- `guestLogin()`, `silentLogin()` and `refreshToken()` threw `IllegalArgumentException` or
+  `NullPointerException` on an incomplete configuration, crashing an app that called them from a
+  coroutine without `try/catch`. A missing setting is now `Resource.Error` with code `400` and the
+  message the exception carried (`"Set guest client secret"`, `"Set guest client id"`,
+  `"Set client id"`, `"Set token endpoint"`); no request is made.
+- Called before `initSDK`, they return `Resource.Exception(IllegalStateException)`.
+- Reached from `refreshToken()`, an incomplete configuration also ends the session, since it cannot
+  be renewed. A direct `guestLogin()` / `silentLogin()` call leaves the current session alone.
+- `getOrCreateConfiguration()`: a response without the advertising configuration returns
+  `Resource.Exception` instead of throwing.
+
+#### 📝 OkHttp 5.1 is a requirement
+- The SDK calls `HttpLoggingInterceptor.redactQueryParams()`, which exists only from OkHttp 5: an
+  app that forces `okhttp` / `logging-interceptor` 4.x crashes at `initSDK` with
+  `NoSuchMethodError`.
+
 ### Version 6.3.4
 **09/11/2026**
 
