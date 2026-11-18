@@ -108,10 +108,10 @@
   <div class="breadcrumbs"><a href="../../../index.html">bluegps_sdk</a><span class="delimiter">/</span><a href="../index.html">com.synapseslab.bluegps_sdk.service</a><span class="delimiter">/</span><span class="current">BlueGPSAdvertisingService</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Blue</span><wbr></wbr><span>GPSAdvertising</span><wbr></wbr><span><span>Service</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">BlueGPSAdvertisingService</a> : <a href="https://developer.android.com/reference/kotlin/android/app/Service.html">Service</a></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html"><strike>BlueGPSAdvertisingService</strike></a> : <a href="https://developer.android.com/reference/kotlin/android/app/Service.html">Service</a></div><div class="deprecation-content"><h3 class="">Deprecated</h3><p class="paragraph">Use BlueGPSLib.instance.startAdvertising(), stopAdvertising(), advertising and backgroundSession. Removed in 7.0.0.</p></div><p class="paragraph">BlueGPS Advertising Service: the advertising API up to 6.3.</p><p class="paragraph">Since 6.4.0 it is a shell around the SDK's advertising engine, the same one behind <code class="lang-kotlin">BlueGPSLib.instance.startAdvertising()</code>, so there is one advertising in the process. Bind, <code class="lang-kotlin">startAdv()</code>, <code class="lang-kotlin">stopAdv()</code>, the <a href="-companion/-a-c-t-i-o-n_-a-d-v.html">ACTION_ADV</a> broadcast and its texts work as in 6.3.7: notification only while advertising runs, one <a href="../../com.synapseslab.bluegps_sdk.data.model.advertising/-service-status/-s-t-o-p-p-e-d/index.html">ServiceStatus.STOPPED</a> and only if it was running, every failed start reported as <a href="../../com.synapseslab.bluegps_sdk.data.model.advertising/-service-status/-e-r-r-o-r/index.html">ServiceStatus.ERROR</a>.</p><p class="paragraph">With a background session running, the service does not show its notification: advertising runs under the session's, and the user sees one notification.</p></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
@@ -160,25 +160,6 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-local-binder/index.html">LocalBinder</a> : <a href="https://developer.android.com/reference/kotlin/android/os/Binder.html">Binder</a></div><div class="brief "><p class="paragraph">Class used for the client Binder.  Because we know this service always runs in the same process as its clients, we don't need to deal with IPC.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div data-togglable="EXTENSION_PROPERTY">
-        <h2 class="">Inherited properties</h2>
-        <div class="table"><a data-name="1685067286%2FProperties%2F-1942305456" anchor-label="dataStore" id="1685067286%2FProperties%2F-1942305456" data-filterable-set=":bluegps_sdk/main"></a>
-          <div class="table-row" data-filterable-current=":bluegps_sdk/main" data-filterable-set=":bluegps_sdk/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../../com.synapseslab.bluegps_sdk.session/data-store.html"><span>data</span><wbr></wbr><span><span>Store</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1685067286%2FProperties%2F-1942305456"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">.</span><a href="../../com.synapseslab.bluegps_sdk.session/data-store.html">dataStore</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -302,7 +283,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-adv.html"><span class="token function">startAdv</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-adv.html"><span class="token function">startAdv</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">androidAdvConfiguration<span class="token operator">: </span><a href="../../com.synapseslab.bluegps_sdk.data.model.advertising/-android-adv-configuration/index.html">AndroidAdvConfiguration</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Start the bluetooth advertising. For any start the SDK asks to the server the configuration.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":bluegps_sdk/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-adv.html"><span class="token function">startAdv</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Start the bluetooth advertising. For any start the SDK asks to the server the configuration.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-adv.html"><span class="token function">startAdv</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">androidAdvConfiguration<span class="token operator">: </span><a href="../../com.synapseslab.bluegps_sdk.data.model.advertising/-android-adv-configuration/index.html">AndroidAdvConfiguration</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Start the bluetooth advertising with the given configuration.</p></div></div></div>
                 </div>
               </div>
             </div>

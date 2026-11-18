@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.synapseslab</groupId>
   <artifactId>android-bluegps-sdk</artifactId>
-  <version>6.3.7</version>
+  <version>6.4.1</version>
   <packaging>aar</packaging>
   <build>
     <plugins>
@@ -118,12 +118,24 @@
       <groupId>androidx.core</groupId>
       <artifactId>core-ktx</artifactId>
       <version>1.17.0</version>
-      <scope>runtime</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.altbeacon</groupId>
       <artifactId>android-beacon-library</artifactId>
       <version>2.21.1</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.lifecycle</groupId>
+      <artifactId>lifecycle-process</artifactId>
+      <version>2.10.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.startup</groupId>
+      <artifactId>startup-runtime</artifactId>
+      <version>1.2.0</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

@@ -1,6 +1,92 @@
 # Changelog: `android-bluegps-sdk`
 
 ## android-bluegps-sdk
+### Version 6.4.1
+**18/11/2026**
+
+#### 🐛 A login right after `initSDK` finds the configuration, and a resumed session keeps its login mode
+- **`guestLogin()` right after `initSDK` no longer fails with "Set guest client secret".**
+  `initSDK` saved the Keycloak parameters in the background, and the logins read them back from
+  storage: a login called at once (a React Native bridge that initializes on first use, for one)
+  found the previous parameters, or none on a fresh install, and returned `Resource.Error(400)`
+  with a correct configuration. The second attempt worked. `initSDK` now waits for the write.
+- **A guest session survives a restart.** `initSDK` overwrote the saved login mode with the
+  configuration, so after a restart `refreshToken()` treated a guest session as a refresh-token
+  one and ended it, and `logout()` tried a server logout instead of the local guest one. `initSDK`
+  now keeps the login mode of the session still on disk: guest, or the `silentLogin()`
+  credentials. The configuration still wins for everything else, `username`/`password` included
+  when you set them in `KeyCloakParameters`.
+- The auth code login clears the credentials of an earlier `silentLogin()`.
+- `guestLogin()` marks the session as guest only when it succeeds.
+- Each login saves its token and its login mode together, even if the caller is cancelled in
+  between.
+
+#### ⚠️ Behaviour change
+- After a first `guestLogin()` that failed (no network, for example), calling `refreshToken()` no
+  longer retries the guest login, it returns `Resource.Error(400)`. Call `guestLogin()` again.
+
+### Version 6.4.0
+**16/11/2026**
+
+#### ✨ Background session: one notification, drawn by the app
+`BlueGPSLib.instance.backgroundSession` keeps the app working in the background behind one ongoing
+notification whose content is entirely the app's: `start(channel, initial, updates, render)` shows
+it at once and redraws it at every value of `updates`. Advertising, beacon scanning and the
+location modules run under it instead of showing one notification each. Same API as the iOS SDK.
+See the documentation, §4.
+
+- **New advertising API**: `startAdvertising()` (suspend, throws `AdvertisingException` with a
+  code), `stopAdvertising()`, `advertising` as a `StateFlow`. No binding, no broadcast.
+- **Logout stops everything**: every logout, the one after an expired session included, stops the
+  session, advertising, beacon scanning and the location modules before clearing the credentials.
+  Until now advertising and the location services kept running.
+- **No visible notification, foreground only**: without `POST_NOTIFICATIONS` or after the user
+  removes the notification, the work pauses in the background and resumes in the foreground.
+- `androidx.core` is now an `api` dependency (`NotificationCompat.Builder` is in the public API);
+  `androidx.lifecycle:lifecycle-process` and `androidx.startup` are new dependencies.
+
+#### ⚠️ `BlueGPSAdvertisingService` is deprecated
+- Removed in 7.0.0. It keeps its broadcast and texts and runs on the new engine, so existing
+  integrations keep working. Two differences: a tag id that is not 12 hexadecimal digits now fails
+  with the "TagId is null or not hexadecimal" error instead of advertising a zero address; without
+  `POST_NOTIFICATIONS`, advertising pauses when the app goes to the background and starts again when
+  it comes back, with no `STOPPED`/`STARTED` in between (6.3.7 stopped it for good when Android
+  stopped the service).
+
+#### 🐛 Foreground notifications no longer ring: new notification channels
+The ongoing notifications of the advertising service and the beacon scan made a sound and vibrated
+every time the service started, and the beacon scan one also showed a heads-up banner. They now use
+`IMPORTANCE_LOW` channels and silent notifications.
+
+- ⚠️ **Channel ids change.** Android does not let an app lower the importance of an existing
+  channel, so each service has a new channel and the old one is deleted:
+
+  | Service | Old channel | New channel |
+  |---|---|---|
+  | `BlueGPSAdvertisingService` | `bluegps_foreground_service` | `bluegps_adv_service` |
+  | `BGPScanBeaconService` | `BGP_Scan_Service_Channel` | `bluegps_scan_service` |
+
+  Settings a user changed on the old channels are lost. An app that posts its own notifications on
+  an old id must move to its own channel.
+- Channel names in the system settings are readable and translated.
+- The beacon scan notification is translated: title and Stop action no longer appear in English
+  only.
+
+### Version 6.3.8
+**13/11/2026**
+
+#### 🐛 `BlueGPSMapView`: no white page while the map loads, dark mode applied from `initMap`
+- The map stays invisible from `initMap()` until `INIT_SDK_COMPLETED`, then fades in. Shown anyway
+  after 15 s if the init does not complete.
+- The background behind the page follows `style.darkMode` or the device night mode (`#262626` /
+  `#F7F7F7`). New `setLoadingBackgroundColor(color)` to override it.
+- `style.darkMode = true` passed to `initMap()` is now applied before the map is shown.
+  `setDarkMode()` after `INIT_SDK_COMPLETED` is no longer needed.
+
+#### ⚠️ Behaviour change
+- The loading animation of the map page is no longer visible: the view behind the map shows until
+  it is ready. `hideUntilReady = false`, set before `initMap()`, keeps the previous behaviour.
+
 ### Version 6.3.7
 **12/11/2026**
 

@@ -9,7 +9,7 @@
 
 | Latest Update    | Stable Release	 | Beta Release    | Alpha Release   |
 | ---------------- | --------------- | --------------- | --------------- |
-| November 12, 2026  | 6.3.7        | -               | -               |
+| November 18, 2026  | 6.4.1        | -               | -               |
 
 ## Integration guide
 ### Requirements
@@ -18,6 +18,7 @@ Minimum requirements are:
 
 - Minimum SDK: 23
 - Usage of Android X
+- `compileSdk` 36, Kotlin 2.1, OkHttp 5.1: see the [Documentation](https://synapseslab.com/android-bluegps-sdk-public/doc/doc.html), §2.1
 
 ### Adding the Library to an existing Android application
 
@@ -58,7 +59,7 @@ The `version` corresponds to release version, for example:
 
 ```gradle
 dependencies {
-    implementation 'com.github.synapseslab:android-bluegps-sdk-public:6.3.7'
+    implementation 'com.github.synapseslab:android-bluegps-sdk-public:6.4.1'
 }
 ```
 
@@ -185,7 +186,7 @@ when (val result = BlueGPSAuthManager.instance.guestLogin()) {
     }
 
     is Resource.Success -> {
-        Log.v(TAG, "Login in guest mode, ${result.data}")
+        Log.v(TAG, "Login in guest mode")   // never log result.data: it holds the access token
         loginGuestMode.value = "Login in guest mode"
 
         // update access token on the environment
@@ -206,6 +207,33 @@ BlueGPSAuthManager.instance.logout(handleCallback = {
     }
 })
 ```
+
+### Background session (from 6.4.0)
+The SDK can keep your app working in the background behind **one** ongoing notification whose
+content is entirely yours: advertising, beacon scanning and the location modules run under it.
+
+```kotlin
+val started = BlueGPSLib.instance.backgroundSession.start(
+    channel = IndicatorChannel(id = "tracking", name = getString(R.string.tracking_channel)),
+    initial = content.value,
+    updates = content,                  // a Flow: each value redraws the notification
+) { t ->
+    setSmallIcon(R.drawable.ic_walk)
+    setContentTitle(t.title)
+    setContentText(t.subtitle)
+}
+
+BlueGPSLib.instance.startAdvertising()  // suspend, throws AdvertisingException with a code
+```
+
+Call `start` with the app in the foreground. `backgroundSession.stop()` stops the session and the
+work under it; every logout stops everything too. Full guide, states and events in the
+[Documentation](https://synapseslab.com/android-bluegps-sdk-public/doc/doc.html), §4.
+
+> [!NOTE]
+> `BlueGPSAdvertisingService` (bind and broadcast) still works but is **deprecated** since 6.4.0
+> and will be removed in 7.0.0. It runs on the same engine as `startAdvertising()`. See §4.4 of the
+> documentation.
 
 ## SDK Changelog
 

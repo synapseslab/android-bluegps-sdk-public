@@ -273,9 +273,99 @@ val email: String? = BlueGPSLib.instance.currentUserEmail()
 `BlueGPSAuthManager.instance` also offers `guestLogin()`, `silentLogin(username, password)`,
 `qrCodeAuth(code)` and `logout(handleCallback)`.
 
+`initSDK(...)` restores the saved session at startup. From 6.4.1 it also restores the login mode of
+that session (guest, or the `silentLogin()` credentials), so `refreshToken()` renews it the same way
+it was opened, and a login called right after `initSDK` finds the configuration you passed.
 
 
-## 4. Use BlueGPS Advertising Service
+
+## 4. Background session and advertising
+
+From 6.4.0. The same API exists in the BlueGPS iOS SDK (`BlueGPS.shared.backgroundSession`), with
+the same names, states, events and error codes, so a React Native or Flutter plugin maps the two
+one to one.
+
+A **session** keeps the app working in the background behind **one** ongoing notification. Its
+content belongs entirely to your app: the SDK puts no text, icon or action of its own in it.
+Advertising, beacon scanning and the BlueGPS location modules run under that notification instead
+of showing one each.
+
+### 4.1 Start a session and advertising
+
+`backgroundSession`, `advertising`, `startAdvertising()` and `stopAdvertising()` are extensions of
+`BlueGPSLib`. `startAdvertising()` and `backgroundSession.stop()` are `suspend` functions.
+
+```kotlin
+import com.synapseslab.bluegps_sdk.core.advertising
+import com.synapseslab.bluegps_sdk.core.backgroundSession
+import com.synapseslab.bluegps_sdk.core.startAdvertising
+import com.synapseslab.bluegps_sdk.core.stopAdvertising
+```
+
+```kotlin
+data class Tracking(val title: String, val subtitle: String, val progress: Int)
+
+// In an object that lives as long as the app (a repository), not in a ViewModel: a flow tied
+// to a screen stops with it and freezes the notification on its last value.
+val content = MutableStateFlow(Tracking("Locating", "BlueGPS", 0))
+
+// With the app in the foreground
+val started = BlueGPSLib.instance.backgroundSession.start(
+    channel = IndicatorChannel(id = "tracking", name = getString(R.string.tracking_channel)),
+    initial = content.value,
+    updates = content,                       // each value replaces the content
+) { t ->                                     // render: NotificationCompat.Builder.(Tracking) -> Unit
+    setSmallIcon(R.drawable.ic_walk)         // required by Android
+    setContentTitle(t.title)
+    setContentText(t.subtitle)
+    setProgress(100, t.progress, false)
+    addAction(0, getString(R.string.end), stopIntent)   // optional: your own Stop calls stop()
+}
+
+try {
+    BlueGPSLib.instance.startAdvertising()   // configuration from the server
+} catch (e: AdvertisingException) {
+    // e.code: BLUETOOTH_OFF, BLUETOOTH_NOT_AUTHORIZED, INVALID_TAG_ID, CONFIGURATION_UNAVAILABLE,
+    //         STARTED_FROM_BACKGROUND, ADVERTISING_NOT_SUPPORTED, ADVERTISING_FAILED (platformCode)
+}
+
+content.value = Tracking("To Meeting Room 3", "40 m", 60)   // the notification follows
+
+BlueGPSLib.instance.stopAdvertising()          // advertising only
+BlueGPSLib.instance.backgroundSession.stop()   // the session, and advertising and the work under it
+```
+
+### 4.2 States and events
+
+| Read | What it says |
+|---|---|
+| `backgroundSession.state` | `Idle` · `Running(since)` |
+| `backgroundSession.indicator` | `NotRequested` · `Shown` · `Ended(BY_USER, BY_SYSTEM, BY_APP)` · `Unavailable(NOT_ALLOWED, REQUEST_FAILED)` |
+| `backgroundSession.limitations` | `INDICATOR_NOT_ALLOWED` (no `POST_NOTIFICATIONS`), `ADVERTISING_NOT_RUNNING` |
+| `backgroundSession.events` | `Started(at)`, `Stopped(at)`, `IndicatorChanged(state)`, `AdvertisingChanged(state)` |
+| `BlueGPSLib.instance.advertising` | `Off` · `On(configuration)` · `Failed(code)` |
+
+### 4.3 What to know
+
+- **Call `start` with the app in the foreground.** From the background Android refuses the
+  foreground service: the session runs, the indicator is `Unavailable(REQUEST_FAILED)`.
+- **`render` is synchronous** and runs at every update. The SDK sets the channel, the ongoing flag,
+  `setOnlyAlertOnce` and the delete intent after it. At most one update per second reaches the
+  notification, the newest winning; a value equal to the one shown is skipped. On Android 16 the
+  notification can become a Live Update with a suitable style: `InboxStyle` prevents it.
+- **No visible notification, foreground only.** Without `POST_NOTIFICATIONS`, or once the user
+  swipes the notification away (Android 14+), the session goes on but its work pauses when the
+  app goes to the background and resumes when it comes back. A removed notification does not
+  come back during the session.
+- **Logout stops everything**: session, advertising, beacon scanning and the location modules stop
+  before the credentials are cleared, the logout after an expired session included.
+
+### 4.4 BlueGPSAdvertisingService (deprecated)
+
+> **Deprecated since 6.4.0, removed in 7.0.0.** Existing integrations keep working: the service runs
+> on the same advertising engine as `startAdvertising()`, so there is one advertising in the
+> process, and with a session running it shows no notification of its own. Move to §4.1 when you
+> can.
 
 For use the BlueGPS Advertising service, defines callbacks for service binding, passed to `bindService()`
 
@@ -346,17 +436,15 @@ suspend fun getDeviceConfiguration(): Resource<AndroidAdvConfiguration>
 ```
 
 Advertising continues in background through a foreground service with a notification. On Android
-13+ that needs `POST_NOTIFICATIONS`: without it the service is not promoted to the foreground,
-advertising runs while the app is in the foreground and stops when Android stops the service in
-background. Called from background without it, `startAdv` does not start and broadcasts
-`ServiceStatus.ERROR`. Once the permission is granted, the next `startAdv` brings the notification
-up.
+13+ that needs `POST_NOTIFICATIONS`: without it advertising pauses when the app goes to the
+background and starts again when it comes back, with no `STOPPED`/`STARTED` in between (from
+6.4.0). A tag id that is not 12 hexadecimal digits fails with the "TagId is null or not
+hexadecimal" `ERROR` (from 6.4.0).
 
 The notification exists only while advertising runs (from 6.3.7). Binding the service does not show
 it: it appears when advertising starts (`STARTED`), and goes away with `stopAdv()`, with the Stop
 action of the notification, and with an `ERROR` that leaves advertising off. A service your app is
-still bound to stays alive without a notification. Call `stopAdv()` on logout: the SDK logout stops
-position tracking, not advertising.
+still bound to stays alive without a notification. From 6.4.0 the SDK logout stops advertising too.
 
 For stop you service advertising call:
 
@@ -371,7 +459,7 @@ blueGPSAdvertisingService?.stopAdv()
 
 
 
-### 4.1. Optional
+#### Service status (optional)
 
 If you are interested to receiver logs and display info about the status of the Service,
 subclass ``BroadcastReceiver`` and implement the ``onReceive(...)`` method.
@@ -502,6 +590,30 @@ At this point the configuration is injected and the loading animation should dis
 by your map:
 
 <img src="../images/map_view_loaded.png" alt="Map view loaded" width="300"/>
+
+#### Loading and dark mode
+
+The map never shows a white page while it loads (from 6.3.8):
+
+- From `initMap()` until `TypeMapCallback.INIT_SDK_COMPLETED` the map stays invisible and the view
+  behind it shows, then it fades in. Set `hideUntilReady = false` before `initMap()` to keep the map
+  (and the loading animation above) visible while it loads. If `INIT_SDK_COMPLETED` does not arrive
+  within 15 seconds, the map is shown anyway.
+- The background behind the page follows `style.darkMode` or, without a `style`, the device night
+  mode: `#262626` dark, `#F7F7F7` light, the map's own defaults. When the server configures a
+  different map background, set it with `setLoadingBackgroundColor(color)` before `initMap()`.
+- `style.darkMode = true` passed to `initMap()` is applied before the map is shown: there is no need
+  to call `setDarkMode()` after `INIT_SDK_COMPLETED`. `setDarkMode()` stays available to switch
+  later, for example when the device theme changes.
+
+```kotlin
+binding.webView.initMap(
+    sdkEnvironment = sdkEnvironment,
+    configurationMap = ConfigurationMap(
+        style = MapStyle(darkMode = isNightMode),
+    ),
+)
+```
 
 ### 5.1 ToolboxGUI
 
@@ -906,8 +1018,6 @@ The diagnostic is designed to include different info like:
     - DesigoCC
     
     - Micronpass
-    
-    - Quuppa
     
       
 
